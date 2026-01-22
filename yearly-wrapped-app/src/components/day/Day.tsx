@@ -9,7 +9,9 @@ const Day: React.FC<PageProps> = ({ }) => {
 
   return (
     <>
-      <p>Day</p>
+      <div className="app-page">
+        <h3 className='m-0'>Day</h3>
+      </div>
     </>
   )
 }

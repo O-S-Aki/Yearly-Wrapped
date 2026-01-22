@@ -9,7 +9,9 @@ const Year: React.FC<PageProps> = ({ }) => {
 
   return (
     <>
-      <p>Year</p>
+      <div className="app-page">
+        <h3 className='m-0'>Year</h3>
+      </div>
     </>
   )
 }

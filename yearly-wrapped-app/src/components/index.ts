@@ -1,4 +1,5 @@
 export { default as Navbar } from './navbar/Navbar';
+export { default as UserModal} from './userModal/UserModal';
 
 export { default as Login } from './login/Login';
 export { default as Home } from './home/Home';

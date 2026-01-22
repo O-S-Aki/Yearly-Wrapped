@@ -9,14 +9,9 @@ const Home: React.FC<PageProps> = ({ }) => {
 
   return (
     <>
-      <p>Home</p>
-      <div>
-      <h1>2026 Wrapped</h1>
-
-      {/*<p>Logged in as {user.email}</p>
-      <button className="btn btn-secondary" onClick={signOut}>Log out</button>*/}
-
-    </div>
+      <div className="app-page">
+        <h3 className='m-0'>Home</h3>
+      </div>
     </>
   )
 }

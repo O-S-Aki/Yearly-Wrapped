@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="app d-flex flex-column">
       <header>
-        <Navbar />
+        <Navbar user={user} logout={logout} />
       </header>
 
       <div className="main">
@@ -30,7 +30,6 @@ function App() {
                 <Route path="/year/:year/month/:month" element={<Month />} />
                 <Route path="/year/:year/month/:month/day/:day" element={<Day />} />
               </Routes>
-              <button className="btn btn-secondary" onClick={logout}>Logout</button>
             </>) : (
             <>
               <Login />

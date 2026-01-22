@@ -1,44 +1,42 @@
-import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
-import { client } from "./lib/supabaseClient";
-import { Login} from "./components";
+import { Home, Login, Navbar,
+  Year, Month, Day } from "./components";
+
+import { useAuth } from "./hooks/useAuth";
+
+import { logout } from "./lib/api/user";
+
+import './App.css';
 
 function App() {
-  const [user, setUser] = useState<null | any>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // 1. Check existing session on app load
-    client.auth.getSession().then(({ data }) => {
-      setUser(data.session?.user ?? null);
-      setLoading(false);
-    });
-
-    // 2. Listen for auth changes (login/logout)
-    const { data: authListener } =
-      client.auth.onAuthStateChange((_event, session) => {
-        setUser(session?.user ?? null);
-      });
-
-    return () => {
-      authListener.subscription.unsubscribe();
-    };
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!user) {
-    return <Login />;
-  }
+  const { user } = useAuth();
 
   return (
-    <div>
-      <h1>2026 Wrapped</h1>
-      <p>Logged in as {user.email}</p>
+    <div className="app d-flex flex-column">
+      <header>
+        <Navbar />
+      </header>
 
-      {/* Your app starts here */}
+      <div className="main">
+        {
+          user ? (
+            <>
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/home' element={<Home />} />
+
+                <Route path="/year/:year" element={<Year />} />
+                <Route path="/year/:year/month/:month" element={<Month />} />
+                <Route path="/year/:year/month/:month/day/:day" element={<Day />} />
+              </Routes>
+              <button className="btn btn-secondary" onClick={logout}>Logout</button>
+            </>) : (
+            <>
+              <Login />
+            </>)
+        }
+      </div>
     </div>
   );
 }

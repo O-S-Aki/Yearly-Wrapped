@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import { client } from '../lib/supabaseClient';
-import { getActiveUser, getSession } from '../lib/api/user';
+
+import { getSession } from '../lib/api/user';
+import { mapResponseToUser } from '../lib/mappers';
 
 import type { ISession, IUser } from '../lib/interfaces';
 
@@ -13,17 +15,17 @@ export function useAuth() {
     async function initialiseAuth() {
     const session: ISession| null = await getSession();
       if (session) {
-        const activeUser: IUser = await getActiveUser();
+        const activeUser: IUser = session.user;
+        console.log(activeUser)
         setUser(activeUser);
       }
     }
 
     initialiseAuth();
 
-    const { data: authListener } = client.auth.onAuthStateChange(async (_event, session) => {
-      console.log(session);
+    const { data: authListener } = client.auth.onAuthStateChange((_event, session) => {
       if (session) {
-        const activeUser: IUser = await getActiveUser();
+        const activeUser: IUser = mapResponseToUser(session.user);
         setUser(activeUser)
       }
       else {

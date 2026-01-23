@@ -2,35 +2,26 @@ import { useState, useEffect } from 'react';
 
 import { client } from '../lib/supabaseClient';
 
-import { getSession } from '../lib/api/user';
-import { mapResponseToUser } from '../lib/mappers';
-
+import { mapResponseToSession } from '../lib/mappers/userMapper';
 import type { ISession, IUser } from '../lib/interfaces';
-
 
 export function useAuth() {
   const [user, setUser] = useState<IUser | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    async function initialiseAuth() {
-    const session: ISession| null = await getSession();
-      if (session) {
-        const activeUser: IUser = session.user;
-        console.log(activeUser)
-        setUser(activeUser);
-      }
-    }
-
-    initialiseAuth();
-
     const { data: authListener } = client.auth.onAuthStateChange((_event, session) => {
       if (session) {
-        const activeUser: IUser = mapResponseToUser(session.user);
+        const activeSession: ISession = mapResponseToSession(session);
+        const activeUser: IUser = activeSession.user;
+
         setUser(activeUser)
       }
       else {
         setUser(null)
       }
+
+      setLoading(false);
     });
 
     return () => {
@@ -38,6 +29,6 @@ export function useAuth() {
     }
   }, [])
 
-  return { user };
+  return { user, loading };
 }
 

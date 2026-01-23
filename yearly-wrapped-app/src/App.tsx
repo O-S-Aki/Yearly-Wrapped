@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Home, Login, Navbar,
   Year, Month, Day } from "./components";
 
+import { RedirectToCurrentMonth } from './components';
 import { useAuth } from "./hooks/useAuth";
 
 import { logout } from "./lib/api/user";
@@ -10,7 +11,11 @@ import { logout } from "./lib/api/user";
 import './App.css';
 
 function App() {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <></>
+  }
 
   return (
     <div className="app d-flex flex-column">
@@ -23,7 +28,8 @@ function App() {
           user ? (
             <>
               <Routes>
-                <Route path='/' element={<Home />} />
+                <Route path='/' element={<RedirectToCurrentMonth />} />
+
                 <Route path='/home' element={<Home />} />
 
                 <Route path="/year/:year" element={<Year />} />
@@ -33,7 +39,8 @@ function App() {
             </>) : (
             <>
               <Login />
-            </>)
+            </>
+            )
         }
       </div>
     </div>

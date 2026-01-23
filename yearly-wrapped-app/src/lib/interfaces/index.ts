@@ -9,3 +9,5 @@ export type { default as ISong } from './ISong';
 
 export type { default as ISocialExposure } from './ISocialExposure';
 export type { default as IMealHealth } from './IMealHealth';
+
+export type { default as ICalendarDay } from './ICalendarDay';

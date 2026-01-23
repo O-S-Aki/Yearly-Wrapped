@@ -1,14 +1,14 @@
 .navbar {
-  background-color: var(--background);
+  background-color: var(--background-dark);
   box-shadow: 0px 0px 10px rgba(182, 187, 199, 0.2);
 }
 
 .navbar-icon {
-  color: var(--primary);
+  color: var(--primary-dark);
 }
 
 .navbar-title {
-  color: var(--text);
+  color: var(--text-dark);
   text-transform: uppercase;
   font-weight: bold;
 }

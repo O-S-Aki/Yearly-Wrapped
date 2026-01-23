@@ -5,7 +5,7 @@ export const mapResponseToDay = (data: any): IDay => {
   const day: IDay = {
     id: data.Id,
     userId: data.UserId,
-    date: new Date(data.Date),
+    date: data.Date,
     note: data.Note,
     mood: mapResponeToMood(data.Mood),
     song: mapResponseToSong(data.Song),
@@ -18,11 +18,10 @@ export const mapResponseToDay = (data: any): IDay => {
 export const mapResponseToSimpleDay = (data: any): ISimpleDay => {
   const simpleDay: ISimpleDay = {
     id: data.Id,
-    date: new Date(data.Date),
+    date: data.Date,
     mood: mapResponeToMood(data.Mood),
   }
 
-  console.log(simpleDay.date.getMonth())
   return simpleDay;
 }
 

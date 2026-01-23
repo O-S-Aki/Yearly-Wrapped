@@ -7,3 +7,8 @@ export { default as Home } from './home/Home';
 export { default as Year } from './year/Year';
 export { default as Month } from './month/Month';
 export { default as Day } from './day/Day';
+
+export { default as MonthCalendar } from './monthCalendar/MonthCalendar';
+export { default as DayCell } from './dayCell/DayCell';
+
+export { default as RedirectToCurrentMonth } from './redirect/RedirectToCurrentMonth';

@@ -5,13 +5,22 @@
   --background-dark: #0f1013;
   --primary-dark: #b6bbc7;
   --secondary-dark: #534559;
+  --tertiary-dark: #16171b;
   --accent-dark: #9d8199;
+  --outline-dark: rgba(182, 187, 199, 0.3);
 
   --text-light: #16181d;
   --background-light: #ebecef;
   --primary-light: #373c48;
   --secondary-light: #b4a6ba;
   --accent-light: #7f627a;
+
+  --color-f: #fd3434;
+  --color-d: #ff9544;
+  --color-c: #ffdc44;
+  --color-b: #baf55c;
+  --color-a: #108622;
+  --color-s: #40c7f0;
 }
 
 html {

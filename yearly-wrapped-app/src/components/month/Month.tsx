@@ -20,16 +20,17 @@ const Month: React.FC<PageProps> = ({ }) => {
   const chosenMonth = Number(month);
 
   const { days } = useDaysOfMonth(chosenYear, chosenMonth);
-  const calendarDays: ICalendarDay[] = buildMonthGrid(chosenYear, chosenMonth, days);
+  const calendarWeeks: ICalendarDay[][] = buildMonthGrid(chosenYear, chosenMonth, days);
   
   return (
     <>
       <div className="app-page">
-        <h3 className='m-0'>Month</h3>
         {
-          calendarDays ? (
+          calendarWeeks ? (
             <>
-              <MonthCalendar days={calendarDays} />
+              <div className="calendar-container mt-2">
+                <MonthCalendar year={chosenYear} month={chosenMonth} weeks={calendarWeeks} />
+              </div>
             </>) : (<></>)
         }
       </div>

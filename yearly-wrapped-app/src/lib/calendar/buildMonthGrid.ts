@@ -1,8 +1,8 @@
-import { datesAreEqual } from "./dateUtil";
+import { convertDaysIntoWeeks, datesAreEqual } from "./calendarUtil";
 
 import type { ICalendarDay, ISimpleDay } from "../interfaces";
 
-export function buildMonthGrid (year: number, month: number, days: ISimpleDay[]): ICalendarDay[] {
+export function buildMonthGrid (year: number, month: number, days: ISimpleDay[]): ICalendarDay[][] {
   const firstDayOfMonth: Date = new Date(year, month - 1, 1);
   const startDayOfWeek: number = firstDayOfMonth.getDay();
 
@@ -32,5 +32,6 @@ export function buildMonthGrid (year: number, month: number, days: ISimpleDay[])
     monthGrid.push(calendarDay)
   }
 
-  return monthGrid;
+  const monthGridWeekly: ICalendarDay[][] = convertDaysIntoWeeks(monthGrid);
+  return monthGridWeekly;
 }

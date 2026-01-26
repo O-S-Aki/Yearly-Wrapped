@@ -1,0 +1,19 @@
+.day-cell .date {
+  color: var(--primary-dark);
+  font-weight: bold;
+}
+
+.day-cell.today {
+  border: 1px solid white;
+}
+
+.day-cell .date.not-current,
+.day-cell .date.today.not-current {
+  color: var(--secondary-dark);
+}
+
+.mood-indicator {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}

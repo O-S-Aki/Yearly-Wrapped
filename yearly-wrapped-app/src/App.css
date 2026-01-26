@@ -13,3 +13,27 @@
   width: 85%;
   align-self: center;
 }
+
+.color-f {
+  color: var(--color-f);
+}
+
+.color-d {
+  color: var(--color-d);
+}
+
+.color-c {
+  color: var(--color-c);
+}
+
+.color-b {
+  color: var(--color-b);
+}
+
+.color-a {
+  color: var(--color-a);
+}
+
+.color-s {
+  color: var(--color-s);
+}

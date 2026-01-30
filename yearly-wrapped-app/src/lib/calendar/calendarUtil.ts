@@ -1,11 +1,12 @@
-import type { ICalendarDay } from "../interfaces";
+import type { ISimpleDay, ICalendarDay } from "../interfaces";
 
-export function datesAreEqual(day1: Date, day2: Date): boolean {
-  const equal: boolean = day1.getFullYear() == day2.getFullYear()
-    && day1.getMonth() == day2.getMonth()
-    && day1.getDate() == day2.getDate();
-
-  return equal;
+export function filterDaysByMonth(days: ISimpleDay[], year: number, month: number): ISimpleDay[] {
+  return days.filter(day => {
+    const date = new Date(day.date);
+    return (
+      date.getFullYear() == year && date.getMonth() + 1 == month
+    )
+  })
 }
 
 export function convertDaysIntoWeeks(days: ICalendarDay[]): ICalendarDay[][] {
@@ -16,6 +17,14 @@ export function convertDaysIntoWeeks(days: ICalendarDay[]): ICalendarDay[][] {
   }
 
   return weeks;
+}
+
+export function datesAreEqual(day1: Date, day2: Date): boolean {
+  const equal: boolean = day1.getFullYear() == day2.getFullYear()
+    && day1.getMonth() == day2.getMonth()
+    && day1.getDate() == day2.getDate();
+
+  return equal;
 }
 
 export function getMonthName(month: number, shortened?: boolean): string {

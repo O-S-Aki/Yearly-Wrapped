@@ -1,0 +1,71 @@
+.color-f {
+  color: var(--color-f);
+}
+
+.color-d {
+  color: var(--color-d);
+}
+
+.color-c {
+  color: var(--color-c);
+}
+
+.color-b {
+  color: var(--color-b);
+}
+
+.color-a {
+  color: var(--color-a);
+}
+
+.color-s {
+  color: var(--color-s);
+}
+
+.color-text {
+  color: var(--text-dark);
+}
+
+.color-background {
+  color: var(--background-dark);
+}
+
+.color-primary {
+  color: var(--primary-dark);
+}
+
+.color-secondary {
+  color: var(--secondary-dark);
+}
+
+.color-tertiary {
+  color: var(--tertiary-dark);
+}
+
+.color-accent {
+  color: var(--accent-dark);
+}
+
+.background-text {
+  background-color: var(--text-dark);
+}
+
+.background-background {
+  background-color: var(--background-dark);
+}
+
+.background-primary {
+  background-color: var(--primary-dark);
+}
+
+.background-secondary {
+  background-color: var(--secondary-dark);
+}
+
+.background-tertiary {
+  background-color: var(--tertiary-dark);
+}
+
+.background-accent {
+  background-color: var(--accent-dark);
+}

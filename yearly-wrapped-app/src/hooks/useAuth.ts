@@ -5,7 +5,7 @@ import { client } from '../lib/supabaseClient';
 import { mapResponseToSession } from '../lib/mappers/userMapper';
 import type { ISession, IUser } from '../lib/interfaces';
 
-export function useAuth() {
+export default function useAuth() {
   const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 

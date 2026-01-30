@@ -15,12 +15,14 @@
   --secondary-light: #b4a6ba;
   --accent-light: #7f627a;
 
-  --color-f: #fd3434;
-  --color-d: #ff9544;
-  --color-c: #ffdc44;
-  --color-b: #baf55c;
-  --color-a: #108622;
-  --color-s: #40c7f0;
+  --color-f: #ca0000;
+  --color-d: #ff4800;
+  --color-c: #e98400;
+  --color-b: #ffd51b;
+  --color-a: #9dff00;
+  --color-s: #00f300;
+
+  --hover-brightness: 1.3;
 }
 
 html {
@@ -34,4 +36,10 @@ body {
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   background-color: var(--background-dark);
   color: var(--text-dark);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }

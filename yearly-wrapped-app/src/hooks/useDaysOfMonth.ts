@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
-import { useAuth } from './useAuth';
+import { useAuth } from './';
 import { getDaysByMonth } from '../lib/api/day';
 
 import type { ISimpleDay } from '../lib/interfaces';
 
-export function useDaysOfMonth(year: number, month: number) {
+export default function useDaysOfMonth(year: number, month: number) {
   const { user } = useAuth();
   const [days, setDays] = useState<ISimpleDay[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

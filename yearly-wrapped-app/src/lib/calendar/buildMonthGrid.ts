@@ -13,11 +13,11 @@ export function buildMonthGrid (year: number, month: number, days: ISimpleDay[])
 
   const monthGrid: ICalendarDay[] = [];
   const maxNumberOfWeeks: number = 6;
-
+  
   for (let i = 0; i < (7 * maxNumberOfWeeks); i ++) {
     const date: Date = new Date(calendarStartDate);
     date.setDate(i + calendarStartDate.getDate());
-
+  
     const isoDate = date.toISOString().split("T")[0];
 
     const calendarDay: ICalendarDay = {

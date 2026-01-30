@@ -4,24 +4,18 @@
   max-width: fit-content;
   cursor: pointer;
   align-self:flex-end;
-  color: var(--primary-dark);
 }
 
 .user-modal-container {
   top: 120%;
-  background-color: var(--primary-dark);
   white-space: nowrap;
   border-radius: 0.25rem;
 }
 
 .dropdown-section {
-  background-color: var(--primary-dark);
   border-radius: 0.25rem;
-  color: var(--background-dark);
 }
 
 .dropdown-section.clickable {
   cursor: pointer;
-  background-color: var(--background-dark);
-  color: var(--text);
 }

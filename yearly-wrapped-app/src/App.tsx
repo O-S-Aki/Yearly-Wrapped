@@ -1,10 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 
 import { Home, Login, Navbar,
-  Year, Month, Day } from "./components";
+  Year, Month} from "./components";
 
-import { RedirectToCurrentMonth } from './components';
-import { useAuth } from "./hooks/useAuth";
+import { useAuth } from "./hooks";
 
 import { logout } from "./lib/api/user";
 
@@ -28,13 +27,8 @@ function App() {
           user ? (
             <>
               <Routes>
-                <Route path='/' element={<RedirectToCurrentMonth />} />
-
+                <Route path='/' element={<Home />} />
                 <Route path='/home' element={<Home />} />
-
-                <Route path="/year/:year" element={<Year />} />
-                <Route path="/year/:year/month/:month" element={<Month />} />
-                <Route path="/year/:year/month/:month/day/:day" element={<Day />} />
               </Routes>
             </>) : (
             <>

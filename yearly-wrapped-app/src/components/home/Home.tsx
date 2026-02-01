@@ -1,9 +1,10 @@
 import React from 'react';
 
-import Month from '../month/Month';
+import { useCalendarState } from '../../hooks';
+
+import { Month, Day } from '../';
 
 import './home.css';
-import { useCalendarState } from '../../hooks';
 
 interface PageProps {
 }
@@ -13,13 +14,13 @@ const Home: React.FC<PageProps> = ({ }) => {
 
   return (
     <>
-      <div className="app-page d-flex flex-column mt-4 p-4 gap-4">
+      <div className="app-page d-flex flex-column mt-3 py-3 px-2 gap-4">
         <div className="top-section d-flex flex-row justify-content-start gap-4">
           <div className="calendar-section p-2 ">
             <Month calendarState={calendarState} />
           </div>
           <div className="current-day-section p-2">
-            DAY
+            <Day calendarState={calendarState} />
           </div>
         </div>
         <div className="bottom-section d-flex flex-row align-items-center justify-content-start">

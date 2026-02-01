@@ -6,5 +6,6 @@ export default interface ICalendarDay {
   dayNumber: number;
   isCurrentMonth: boolean;
   isToday: boolean;
+  isSelected?: boolean;
   entry?: ISimpleDay | null;
 }

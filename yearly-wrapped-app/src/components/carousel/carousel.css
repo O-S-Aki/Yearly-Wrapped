@@ -40,7 +40,7 @@
 }
 
 .navigation-buttons button:active,
-.navigation-dots button:hover {
+.navigation-dots button:active {
   border: none;
 }
 
@@ -51,5 +51,9 @@
 }
 
 .embla__dot--selected {
+  background-color: var(--primary-dark);
+}
+
+.navigation-dots button.embla__dot--selected:hover {
   background-color: var(--primary-dark);
 }

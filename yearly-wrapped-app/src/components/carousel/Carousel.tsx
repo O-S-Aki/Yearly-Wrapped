@@ -7,13 +7,13 @@ import type { EmblaCarouselType } from 'embla-carousel';
 import './carousel.css';
 
 interface CarouselProps {
-  children: React.ReactNode;
-  onSelect?: (index: number) => void;
+  children: React.ReactNode;  
+  onIndexChange?: (index: number) => void;
   initialIndex?: number;
 }
 
-const Carousel: React.FC<CarouselProps> = ({children, onSelect, initialIndex }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, startIndex: initialIndex, watchDrag: false });
+const Carousel: React.FC<CarouselProps> = ({children, onIndexChange, initialIndex }) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, watchDrag: false });
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
   const [selectedSnap, setSelectedSnap] = useState(initialIndex)
 
@@ -25,24 +25,32 @@ const Carousel: React.FC<CarouselProps> = ({children, onSelect, initialIndex }) 
   const setActiveSnap = (emblaApi: EmblaCarouselType) => setSelectedSnap(emblaApi.selectedScrollSnap());
 
   useEffect(() => {
+    if (!emblaApi || initialIndex == null){
+      return;
+    }
+
+    emblaApi.scrollTo(initialIndex, false)
+  }, [emblaApi, initialIndex])
+
+  useEffect(() => {
     if (emblaApi) {
       setupSnaps(emblaApi);
       emblaApi.on('reInit', setupSnaps)
 
-      const handleSelect = () => {
+      const handleIndexChange = () => {
         const index = emblaApi.selectedScrollSnap();
-        onSelect?.(index);
+        onIndexChange?.(index);
       };
 
-      emblaApi.on('select', handleSelect);
-      handleSelect();
+      emblaApi.on('select', handleIndexChange);
+      handleIndexChange();
 
       return () => {
-        emblaApi.off('select', handleSelect);
+        emblaApi.off('select', handleIndexChange);
       }
     }
 
-  }, [emblaApi, onSelect])
+  }, [emblaApi, onIndexChange])
 
   useEffect(() => {
     if (emblaApi) {
@@ -56,18 +64,20 @@ const Carousel: React.FC<CarouselProps> = ({children, onSelect, initialIndex }) 
   return (
     <>
     {
-      <div className='embla'>
-        <div className='embla__viewport mb-3' ref={emblaRef}>
-          <div className='embla__container'>
-            {
-              React.Children.map(children, (child, index) => (
-                <div className='embla__slide' key={index}>
-                  {child}
-                </div>
-              ))
-            }
+      <div className="carousel">
+        <div className='embla'>
+          <div className='embla__viewport mb-3' ref={emblaRef}>
+            <div className='embla__container'>
+              {
+                React.Children.map(children, (child, index) => (
+                  <div className='embla__slide' key={index}>
+                    {child}
+                  </div>
+                ))
+              }
+            </div>
           </div>
-        </div>
+        </div>  
 
         <div className="navigation-controls d-flex flex-row justify-content-between align-items-center px-2">
           <div className="navigation-buttons d-flex flex-row gap-3">
@@ -92,7 +102,7 @@ const Carousel: React.FC<CarouselProps> = ({children, onSelect, initialIndex }) 
             </div>
           </div>
         </div>
-      </div>  
+      </div>
     }
     </>
   )

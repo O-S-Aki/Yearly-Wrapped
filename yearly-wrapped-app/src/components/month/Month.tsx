@@ -8,7 +8,7 @@ import { MonthCalendar } from '../';
 import { useDaysOfYear } from '../../hooks/';
 import { buildYearCalendar } from '../../lib/calendar/buildYearCalendar';
 
-import type { ICalendarMonth, ICalendarState } from '../../lib/interfaces';
+import type { ICalendarDay, ICalendarMonth, ICalendarState } from '../../lib/interfaces';
 
 import './month.css';
 
@@ -21,7 +21,22 @@ const Month: React.FC<MonthProps> = ({ calendarState }) => {
   const [activeMonthIndex, setActiveMonthIndex] = useState<number>(calendarState.visibleMonth - 1);
 
   const yearCalendar: ICalendarMonth[] = useMemo(() => 
-    buildYearCalendar(calendarState.visibleYear, yearDays), [calendarState.visibleYear, yearDays]);
+    buildYearCalendar(calendarState.visibleYear, yearDays, calendarState.selectedDate), [calendarState.visibleYear, yearDays, calendarState.selectedDate]);
+
+  const handleDaySelect = (day: ICalendarDay) => {
+    if (day.isCurrentMonth) {
+      calendarState.selectDay(day.date);
+    }
+  }
+
+  const handleMonthChange = (index: number) => {
+    if (index === activeMonthIndex) {
+      return;
+    }
+
+    setActiveMonthIndex(index);
+    calendarState.changeMonth(calendarState.visibleYear, index + 1);
+  }
 
   return (
     <>
@@ -30,10 +45,10 @@ const Month: React.FC<MonthProps> = ({ calendarState }) => {
           yearCalendar ? (
             <>
               <div className="calendar-container">
-                <Carousel initialIndex={activeMonthIndex} onSelect={(index) => setActiveMonthIndex(index)}>
+                <Carousel initialIndex={activeMonthIndex} onIndexChange={(index) => handleMonthChange(index)}>
                   {
                     yearCalendar.map(( { month, weeks }) => (
-                      <MonthCalendar key={month} year={calendarState.visibleYear} month={month} weeks={weeks} />
+                      <MonthCalendar key={month} year={calendarState.visibleYear} month={month} weeks={weeks} onDaySelect={handleDaySelect}/>
                     ))
                   }
                 </Carousel>

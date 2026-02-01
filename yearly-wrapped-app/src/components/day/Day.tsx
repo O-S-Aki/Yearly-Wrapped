@@ -1,16 +1,18 @@
 import React from 'react';
 
+import type { ICalendarState } from '../../lib/interfaces';
+
 import './day.css';
 
 interface PageProps {
+  calendarState: ICalendarState
 }
 
-const Day: React.FC<PageProps> = ({ }) => {
-
+const Day: React.FC<PageProps> = ({ calendarState }) => {
   return (
     <>
       <div className="app-component">
-        <h3 className='m-0'>Day</h3>
+        <p className='m-0'>Selected Date: {calendarState.selectedDate.toDateString()}</p>
       </div>
     </>
   )

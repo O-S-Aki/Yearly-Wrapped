@@ -2,7 +2,7 @@ import { convertDaysIntoWeeks, datesAreEqual } from "./calendarUtil";
 
 import type { ICalendarDay, ISimpleDay } from "../interfaces";
 
-export function buildMonthGrid (year: number, month: number, days: ISimpleDay[]): ICalendarDay[][] {
+export function buildMonthGrid (year: number, month: number, days: ISimpleDay[], selectedDate: Date): ICalendarDay[][] {
   const firstDayOfMonth: Date = new Date(year, month - 1, 1);
   const startDayOfWeek: number = firstDayOfMonth.getDay();
 
@@ -26,7 +26,8 @@ export function buildMonthGrid (year: number, month: number, days: ISimpleDay[])
       dayNumber: date.getDate(),
       isCurrentMonth: date.getMonth() == month - 1,
       isToday: datesAreEqual(date, new Date()),
-      entry: dayMap.get(isoDate) ?? null
+      isSelected: datesAreEqual(date, selectedDate),
+      entry: dayMap.get(isoDate) ?? null,
     };
 
     monthGrid.push(calendarDay)

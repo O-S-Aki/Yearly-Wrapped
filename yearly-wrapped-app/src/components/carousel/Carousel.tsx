@@ -91,10 +91,10 @@ const Carousel: React.FC<CarouselProps> = ({children, onIndexChange, initialInde
           <div className="line">.</div>
           <div className="navigation-dots d-flex flex-row align-items-center justify-content-end">
             <div className="embla__dots">
-              <div className="button-dots-container d-flex flex-row gap-1">
+              <div className="button-dots-container d-flex flex-row gap-2">
                 {
                   scrollSnaps.map((_, index) => (
-                    <button className={`btn embla__dot ${index == selectedSnap ? 'embla__dot--selected' : ''} background-background`} key={index}
+                    <button className={`embla__dot ${index == selectedSnap ? 'embla__dot--selected' : ''} background-background`} key={index}
                       onClick={() => navigateTo(index)}></button>
                   ))
                 }

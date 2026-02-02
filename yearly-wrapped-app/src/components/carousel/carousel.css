@@ -27,7 +27,7 @@
 .navigation-buttons button,
 .navigation-dots button {
   border-radius: 50%;
-  box-shadow: 0 0 5px var(--primary-dark);
+  box-shadow: 0 0 3px var(--primary-dark);
   border: none;
 }
 
@@ -45,8 +45,8 @@
 }
 
 .embla__dot {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
 }
 

@@ -34,7 +34,7 @@ const MonthCalendar: React.FC<MonthCalendarProps> = ({ year, month, weeks, onDay
                   {
                     weekdays.map((weekday, index) => (
                       <div className="weekday-cell py-3" key={index}>
-                        <p className="text-center weekday-label color-accent m-0">{weekday}</p>
+                        <p className="text-center weekday-label color-primary m-0">{weekday}</p>
                       </div>
                     ))
                   }

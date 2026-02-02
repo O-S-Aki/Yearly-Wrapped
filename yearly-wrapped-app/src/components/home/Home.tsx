@@ -24,8 +24,8 @@ const Home: React.FC<PageProps> = ({ }) => {
           </div>
         </div>
         <div className="bottom-section d-flex flex-row align-items-center justify-content-start">
-          <div className="analytics-section w-100 p-2 background-accent">
-            ANALYTICS
+          <div className="analytics-section w-100 p-2">
+            {/*ANALYTICS*/ }
           </div>
         </div>
       </div>

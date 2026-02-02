@@ -40,7 +40,7 @@ const Month: React.FC<MonthProps> = ({ calendarState }) => {
 
   return (
     <>
-      <div className="app-component">
+      <div className="app-component d-flex flex-column align-items-center">
         {
           yearCalendar ? (
             <>

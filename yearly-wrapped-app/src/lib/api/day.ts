@@ -2,6 +2,7 @@ import { client } from '../supabaseClient';
 
 import type { IDay, ISimpleDay } from '../interfaces';
 import { mapResponseToDay, mapResponseToSimpleDay } from '../mappers/dayMapper';
+import { convertToISODate } from '../calendar/calendarUtil';
 
 export async function getDaysByYear(userId: string, chosenYear?: number): Promise<ISimpleDay[]> {
   const year = chosenYear ?? new Date().getFullYear();
@@ -24,7 +25,7 @@ export async function getDaysByMonth(userId: string, chosenYear?: number, chosen
   return days;
 }
 
-export async function getDayByDate(userId: string, date: string): Promise<IDay> {
+export async function getDayByDate(userId: string, date: string): Promise<IDay | null> {
   const response = await client
     .from("Day")
     .select(`
@@ -50,10 +51,13 @@ export async function getDayByDate(userId: string, date: string): Promise<IDay> 
     `)
     .eq("Date", date)
     .eq("UserId", userId)
-    .single();
-
+    .maybeSingle();
+  
+  if (response.error) {
+    console.error(`Failed to get details for ${date}: ${response.error}`);
+  }
   const fetchedDay = response.data;
-  const day: IDay = mapResponseToDay(fetchedDay)
+  const day: IDay | null = fetchedDay? mapResponseToDay(fetchedDay) : null
     
   return day;
 }

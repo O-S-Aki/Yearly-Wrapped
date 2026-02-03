@@ -1,3 +1,7 @@
 .current-day-section {
   flex: 1;
 }
+
+.bottom-section {
+  border-top: 1px solid var(--outline-dark);
+}

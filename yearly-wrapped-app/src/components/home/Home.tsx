@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useCalendarState } from '../../hooks';
 
-import { Month, Day } from '../';
+import { Month, Day, Analytics } from '../';
 
 import './home.css';
 
@@ -25,7 +25,7 @@ const Home: React.FC<PageProps> = ({ }) => {
         </div>
         <div className="bottom-section d-flex flex-row align-items-center justify-content-start">
           <div className="analytics-section w-100 p-2">
-            {/*ANALYTICS*/ }
+            <Analytics calendarState={calendarState} />
           </div>
         </div>
       </div>

@@ -88,7 +88,7 @@ const Carousel: React.FC<CarouselProps> = ({children, onIndexChange, initialInde
               <i className="bi bi-chevron-right"></i>
             </button>
           </div>
-          <div className="line">.</div>
+          <div className="line prevent-select">.</div>
           <div className="navigation-dots d-flex flex-row align-items-center justify-content-end">
             <div className="embla__dots">
               <div className="button-dots-container d-flex flex-row gap-2">

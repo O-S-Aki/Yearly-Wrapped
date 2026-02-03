@@ -3,9 +3,7 @@
   text-transform: uppercase;
 }
 
-.day-rating-container,
-.day-summary-container,
-.song-of-the-day-container {
+.day-section-container {
   border-bottom: 1px solid var(--outline-dark);
 }
 
@@ -30,4 +28,20 @@
 .song-of-the-day-title {
   font-weight: 600;
   text-transform: uppercase;
+}
+
+.song-play-button {
+  font-size: 2.5rem;
+}
+
+.edit-day-button {
+  border: 1px solid var(--primary-dark);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.edit-day-button:hover {
+  background-color: var(--tertiary-dark);
+  border: 1px solid var(--primary-dark);
+  color: var(--primary-dark);
 }

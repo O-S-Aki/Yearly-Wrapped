@@ -10,9 +10,10 @@ export { default as Day } from './day/Day';
 
 export { default as MonthCalendar } from './monthCalendar/MonthCalendar';
 export { default as DayCell } from './dayCell/DayCell';
-export { default as DayDetails } from './dayDetails/DayDetails';
-
 export { default as Carousel } from './carousel/Carousel';
+
+export { default as DayDetails } from './dayDetails/DayDetails';
+export { default as Analytics } from './analytics/Analytics';
 
 export { default as RedirectToCurrentMonth } from './redirect/RedirectToCurrentMonth';
 export { default as RedirectToCurrentYear } from './redirect/RedirectToCurrentYear';

@@ -17,7 +17,7 @@ const Day: React.FC<PageProps> = ({ day }) => {
         {
           day ? (
             <>
-              <div className="day-rating-container py-3">
+              <div className="day-section-container py-3">
                 <h5 className="mb-2 detail-section-title color-primary">Rating</h5>
                 <div className="d-flex flex-row gap-3 align-items-center">
                   <h3 className='m-0'><i className={`bi bi-circle-fill day-rating-icon color-${day.mood.label.toLowerCase()}`}></i></h3>
@@ -27,19 +27,16 @@ const Day: React.FC<PageProps> = ({ day }) => {
                 </div>
               </div>
 
-              <div className="day-summary-container py-3 mt-2">
-                <h5 className="mb-2 detail-section-title color-primary">Summary</h5>
-                <p className="m-0 color-primary">{day.note ?? 'No summary has been recorded for this day.'}</p>
-              </div>
-
               {
                 day.song ? (
                 <>
-                  <div className="song-of-the-day-container py-3 mt-2">
+                  <div className="day-section-container py-3 mt-2">
                     <h5 className="mb-2 detail-section-title color-primary">Song of the Day</h5>
                     <div className="d-flex flex-row align-items-center gap-3">
                       <Link to={day.song.url} target="_blank">
-                        <div className="song-image-container background-tertiary"></div>
+                        <div className="song-image-container background-tertiary d-flex align-items-center justify-content-center">
+                          <i className="bi bi-play-fill song-play-button color-primary"></i>
+                        </div>
                       </Link>
                       <div className='d-flex flex-column'>
                         <h6 className="m-0 song-of-the-day-title color-primary">{day.song.name}</h6>
@@ -49,13 +46,26 @@ const Day: React.FC<PageProps> = ({ day }) => {
                   </div>
                 </>) : (<></>)
               }
+
+              <div className="day-section-container py-3 mt-2">
+                <h5 className="mb-2 detail-section-title color-primary">Summary</h5>
+                <p className="m-0 color-primary">{day.note ?? 'No summary has been recorded for this day.'}</p>
+              </div>
+
+              
             </>):(
             <>
-              <div className="py-3">
+              <div className="day-section-container py-3">
                 <p className="m-0 color-primary">No data has been recorded for this day.</p>
               </div>
             </>)
         }
+
+        <div className="py-3 mt-2 edit-day-button-container">
+          <button className="btn edit-day-button background-tertiary color-primary">
+            {day ? 'Edit Day' : 'Record Day'}
+          </button>
+        </div>
       </div>
     </>
   )

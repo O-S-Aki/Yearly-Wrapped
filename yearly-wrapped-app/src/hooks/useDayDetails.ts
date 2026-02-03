@@ -7,7 +7,7 @@ import type { IDay } from '../lib/interfaces';
 
 export default function useDayDetails(date: string) {
   const { user } = useAuth();
-  const [day, setDay] = useState<IDay | null>();
+  const [day, setDay] = useState<IDay | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {

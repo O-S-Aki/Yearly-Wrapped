@@ -10,6 +10,7 @@ export { default as Day } from './day/Day';
 
 export { default as MonthCalendar } from './monthCalendar/MonthCalendar';
 export { default as DayCell } from './dayCell/DayCell';
+export { default as DayDetails } from './dayDetails/DayDetails';
 
 export { default as Carousel } from './carousel/Carousel';
 

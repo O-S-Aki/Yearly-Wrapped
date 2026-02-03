@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useDayDetails } from '../../hooks';
+import { DayDetails } from '..'; 
 
 import type { ICalendarState } from '../../lib/interfaces';
 
@@ -16,12 +17,12 @@ const Day: React.FC<PageProps> = ({ calendarState }) => {
   
   return (
     <>
-      <div className="app-component p-3 d-flex flex-column align-items-start">
+      <div className="app-component day-container p-3 d-flex flex-column align-items-start">
         <div className="day-title-container pb-3 w-100">
           <h2 className='m-0 w-100 day-full-date'>{date.toLocaleDateString('en-US', {weekday: 'long', month: 'long', day: 'numeric'})}</h2>
         </div>
-        <div className="day-details-container mt-3">
-          <div>Hello</div>
+        <div className="day-details-container">
+          <DayDetails day={day} />
         </div>
       </div>
     </>

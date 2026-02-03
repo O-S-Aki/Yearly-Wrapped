@@ -13,7 +13,7 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({children, onIndexChange, initialIndex }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, watchDrag: false });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, watchDrag: true });
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
   const [selectedSnap, setSelectedSnap] = useState(initialIndex)
 

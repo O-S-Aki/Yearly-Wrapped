@@ -30,7 +30,7 @@
 }
 
 .day-cell-container.selected {
-  outline: 2px solid var(--accent-dark);
+  outline: 2px solid var(--primary-dark);
 }
 
 .weekday-label {

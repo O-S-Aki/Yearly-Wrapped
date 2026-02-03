@@ -1,0 +1,33 @@
+.detail-section-title {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.day-rating-container,
+.day-summary-container,
+.song-of-the-day-container {
+  border-bottom: 1px solid var(--outline-dark);
+}
+
+.day-rating-icon::before {
+  border-radius: 50%;
+  box-shadow: 0 0 5px var(--primary-dark);
+  cursor: pointer;
+}
+
+.rating-description {
+  font-weight: 700;
+}
+
+.song-image-container {
+  height: 60px;
+  width: 60px;
+  border-radius: 0.25rem;
+  border: 1px solid var(--primary-dark);
+  cursor: pointer
+}
+
+.song-of-the-day-title {
+  font-weight: 600;
+  text-transform: uppercase;
+}

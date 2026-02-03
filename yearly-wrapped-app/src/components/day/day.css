@@ -1,0 +1,12 @@
+.day-container {
+  max-width: 720px;
+}
+
+.day-title-container {
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--primary-dark);
+}
+
+.day-full-date {
+  font-weight: 600;
+}

@@ -4,11 +4,11 @@ import type { ICalendarDay } from '../../lib/interfaces';
 
 import './dayCell.css';
 
-interface PageProps {
+interface DayCellProps {
   day: ICalendarDay
 }
 
-const DayCell: React.FC<PageProps> = ({ day }) => {
+const DayCell: React.FC<DayCellProps> = ({ day }) => {
 
   return (
     <>
@@ -16,7 +16,7 @@ const DayCell: React.FC<PageProps> = ({ day }) => {
         day ? (
           <>
             <div className={`day-cell py-1`}>
-              <h5 className={`date text-center m-0 ${day.isCurrentMonth ? '' : 'not-current'}`}>{day.dayNumber}</h5>
+              <h6 className={`date text-center m-0 prevent-select ${day.isCurrentMonth ? 'color-primary' : 'color-secondary'}`}>{day.dayNumber}</h6>
             </div>
             {
               day.isCurrentMonth && day.entry?.mood ? (

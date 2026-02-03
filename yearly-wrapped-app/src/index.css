@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
+  /*
   --text-dark: #e2e4e9;
   --background-dark: #0f1013;
   --primary-dark: #b6bbc7;
@@ -9,18 +10,30 @@
   --accent-dark: #9d8199;
   --outline-dark: rgba(182, 187, 199, 0.3);
 
-  --text-light: #16181d;
-  --background-light: #ebecef;
-  --primary-light: #373c48;
-  --secondary-light: #b4a6ba;
-  --accent-light: #7f627a;
+  --color-f: #ca0000;
+  --color-d: #ff4800;
+  --color-c: #e98400;
+  --color-b: #ffd51b;
+  --color-a: #9dff00;
+  --color-s: #00f300;
+  */
 
-  --color-f: #fd3434;
-  --color-d: #ff9544;
-  --color-c: #ffdc44;
-  --color-b: #baf55c;
-  --color-a: #108622;
-  --color-s: #40c7f0;
+  --text-dark: #16181d;
+  --background-dark: #ebecef;
+  --primary-dark: #373c48;
+  --secondary-dark: #b4a6ba;
+  --tertiary-dark: #dbdde4;
+  --accent-dark: #ad6ba3;
+  --outline-dark: rgba(22, 24, 29, 0.3);
+
+  --color-f: #ca0000;
+  --color-d: #ff5e00;
+  --color-c: #f1a037;
+  --color-b: #fafd2f;
+  --color-a: #b3ff00;
+  --color-s: #00f300;
+
+  --hover-brightness: 1.2;
 }
 
 html {
@@ -34,4 +47,10 @@ body {
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   background-color: var(--background-dark);
   color: var(--text-dark);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }

@@ -1,37 +1,57 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 
+import { Carousel } from '../';
 import { MonthCalendar } from '../';
-import { useMonthCalendar } from '../../hooks/useMonthCalendar';
+
+import { useDaysOfYear } from '../../hooks/';
+import { buildYearCalendar } from '../../lib/calendar/buildYearCalendar';
+
+import type { ICalendarDay, ICalendarMonth, ICalendarState } from '../../lib/interfaces';
 
 import './month.css';
 
-interface PageProps {
+interface MonthProps {
+  calendarState: ICalendarState;
 }
 
-const Month: React.FC<PageProps> = ({ }) => {
-  const { year, month } = useParams();
-  const chosenYear: number = Number(year);
+const Month: React.FC<MonthProps> = ({ calendarState }) => {
+  const { days: yearDays } = useDaysOfYear(calendarState.visibleYear);
+  const [activeMonthIndex, setActiveMonthIndex] = useState<number>(calendarState.visibleMonth - 1);
 
-  const chosenMonth: number = Number(month);
-  const previousMonth: number = chosenMonth > 1 ? chosenMonth - 1 : 12;
-  const nextMonth: number = chosenMonth < 12 ? chosenMonth + 1 : 1;
+  const yearCalendar: ICalendarMonth[] = useMemo(() => 
+    buildYearCalendar(calendarState.visibleYear, yearDays, calendarState.selectedDate), [calendarState.visibleYear, yearDays, calendarState.selectedDate]);
 
-  const { weeks: calendarWeeks } = useMonthCalendar(chosenYear, chosenMonth);
-  const { weeks: previousCalendarWeeks } = useMonthCalendar(chosenYear, previousMonth);
-  const { weeks: nextCalendarWeeks } = useMonthCalendar(chosenYear, nextMonth);
+  const handleDaySelect = (day: ICalendarDay) => {
+    if (day.isCurrentMonth) {
+      calendarState.selectDay(day.date);
+    }
+  }
+
+  const handleMonthChange = (index: number) => {
+    if (index === activeMonthIndex) {
+      return;
+    }
+
+    setActiveMonthIndex(index);
+    calendarState.changeMonth(calendarState.visibleYear, index + 1);
+  }
 
   return (
     <>
-      <div className="app-page">
+      <div className="app-component d-flex flex-column align-items-center">
         {
-          calendarWeeks ? (
+          yearCalendar ? (
             <>
-              <div className="calendar-container mt-2 d-flex flex-row justify-content-center gap-4">
-                <MonthCalendar year={chosenYear} month={previousMonth} weeks={previousCalendarWeeks} />
-                <MonthCalendar year={chosenYear} month={chosenMonth} weeks={calendarWeeks} />
-                <MonthCalendar year={chosenYear} month={nextMonth} weeks={nextCalendarWeeks} />
+              <div className="calendar-container">
+                <Carousel initialIndex={activeMonthIndex} onIndexChange={(index) => handleMonthChange(index)}>
+                  {
+                    yearCalendar.map(( { month, weeks }) => (
+                      <MonthCalendar key={month} year={calendarState.visibleYear} month={month} weeks={weeks} onDaySelect={handleDaySelect}/>
+                    ))
+                  }
+                </Carousel>
               </div>
             </>) : (<></>)
         }

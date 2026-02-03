@@ -1,22 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 import { useAuth } from './';
-import { getDaysByMonth } from '../lib/api/day';
+import { getDaysByYear } from "../lib/api/day";
 
-import type { ISimpleDay } from '../lib/interfaces';
+import type { ISimpleDay } from "../lib/interfaces";
 
-export default function useDaysOfMonth(year: number, month: number) {
+export default function useDaysOfYear(year: number) {
   const { user } = useAuth();
   const [days, setDays] = useState<ISimpleDay[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-
+  
   useEffect(() => {
     if (user) {
       async function loadDays() {
         setLoading(true);
 
-        const daysOfMonth: ISimpleDay[] = await getDaysByMonth(user!.id, year, month);
-        setDays(daysOfMonth);
+        const daysOfYear: ISimpleDay[] = await getDaysByYear(user!.id, year);
+        setDays(daysOfYear);
 
         setLoading(false);
       }
@@ -26,8 +26,7 @@ export default function useDaysOfMonth(year: number, month: number) {
     else {
       return;
     }
-
-  }, [user, year, month])
+  }, [user, year])
 
   return { days, loading };
 }

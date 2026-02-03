@@ -1,14 +1,8 @@
 .navbar {
-  background-color: var(--background-dark);
-  border-bottom: 1px solid var(--outline-dark);
-}
-
-.navbar-icon {
-  color: var(--primary-dark);
+  box-shadow: 0 3px 5px var(--outline-dark);
 }
 
 .navbar-title {
-  color: var(--text-dark);
   text-transform: uppercase;
   font-weight: bold;
 }

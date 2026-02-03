@@ -1,19 +1,26 @@
 .day-cell .date {
-  color: var(--primary-dark);
-  font-weight: bold;
+  font-weight: 300;
 }
 
-.day-cell.today {
-  border: 1px solid white;
-}
-
-.day-cell .date.not-current,
-.day-cell .date.today.not-current {
-  color: var(--secondary-dark);
+.day-cell-container.today .date {
+  color: var(--accent-dark);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .mood-indicator {
   position: absolute;
-  top: 5%;
-  right: 5%;
+  font-size: smaller;
+  top: 7%;
+  right: 10%;
+}
+
+.mood-indicator i::before {
+  border-radius: 50%;
+  box-shadow: 0 0 5px var(--accent-dark);
+}
+
+.date.color-secondary {
+  opacity: 0.7;
 }

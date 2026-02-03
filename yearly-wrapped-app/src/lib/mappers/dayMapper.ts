@@ -5,7 +5,8 @@ export const mapResponseToDay = (data: any): IDay => {
   const day: IDay = {
     id: data.Id,
     userId: data.UserId,
-    date: data.Date,
+    date: new Date(data.Date),
+    isoDate: data.Date,
     note: data.Note,
     mood: mapResponeToMood(data.Mood),
     song: mapResponseToSong(data.Song),

@@ -22,7 +22,7 @@ function App() {
         <Navbar user={user} logout={logout} />
       </header>
 
-      <div className="main">
+      <div className="main mt-5">
         {
           user ? (
             <>

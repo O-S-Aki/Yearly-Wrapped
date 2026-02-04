@@ -1,5 +1,10 @@
 .navbar {
   box-shadow: 0 3px 5px var(--outline-dark);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  opacity: 0.95;
 }
 
 .navbar-title {

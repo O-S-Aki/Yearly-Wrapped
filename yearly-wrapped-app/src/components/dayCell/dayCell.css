@@ -3,7 +3,6 @@
 }
 
 .day-cell-container.today .date {
-  color: var(--accent-dark);
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;

@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
-import { Home, Login, Navbar,
-  Year, Month} from "./components";
+import { Home, Login, Navbar } from "./components";
 
 import { useAuth } from "./hooks";
 

@@ -3,4 +3,6 @@ export default interface ISong {
   name: string;
   artist: string;
   url: string;
+  userId: string;
+  date: string;
 }

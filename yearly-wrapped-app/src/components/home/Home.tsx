@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { useCalendarState } from '../../hooks';
-
 import { Month, Day, Analytics } from '../';
 
 import './home.css';

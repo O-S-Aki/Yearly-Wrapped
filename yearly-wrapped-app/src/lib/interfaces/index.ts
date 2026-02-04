@@ -1,15 +1,18 @@
-export type { default as ISession } from './ISession';
-export type { default as IUser } from './IUser';
+export type { default as ISession } from './entity/ISession';
+export type { default as IUser } from './entity/IUser';
 
-export type { default as IDay } from './IDay';
-export type { default as ISimpleDay } from './ISimpleDay';
+export type { default as IDay } from './entity/IDay';
+export type { default as ISimpleDay } from './entity/ISimpleDay';
 
-export type { default as IMood } from './IMood';
-export type { default as ISong } from './ISong';
+export type { default as IMood } from './entity/IMood';
+export type { default as ISong } from './entity/ISong';
 
-export type { default as ISocialExposure } from './ISocialExposure';
-export type { default as IMealHealth } from './IMealHealth';
+export type { default as ISocialExposure } from './entity/ISocialExposure';
+export type { default as IMealHealth } from './entity/IMealHealth';
 
-export type { default as ICalendarMonth } from './ICalendarMonth';
-export type { default as ICalendarDay } from './ICalendarDay';
-export type { default as ICalendarState } from './ICalendarState';
+export type { default as ICalendarMonth } from './viewModel/ICalendarMonth';
+export type { default as ICalendarDay } from './viewModel/ICalendarDay';
+export type { default as ICalendarState } from './state/ICalendarState';
+
+export type { default as IDayInput } from './upsertModel/IDayInput';
+export type { default as ISongInput } from './upsertModel/ISongInput';

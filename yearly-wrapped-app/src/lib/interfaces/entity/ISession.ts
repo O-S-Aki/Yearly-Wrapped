@@ -1,4 +1,4 @@
-import type { IUser } from './';
+import type { IUser } from '../';
 
 export default interface ISession {
   accessToken: string;

@@ -1,4 +1,4 @@
-import type { ISimpleDay } from './';
+import type { ISimpleDay } from '../';
 
 export default interface ICalendarDay {
   date: Date;

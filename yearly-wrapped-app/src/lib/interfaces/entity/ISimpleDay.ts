@@ -1,4 +1,4 @@
-import type { IMood } from './';
+import type { IMood } from '../';
 
 export default interface ISimpleDay {
   id: string;

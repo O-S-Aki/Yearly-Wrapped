@@ -11,6 +11,7 @@ interface PageProps {
 
 const Day: React.FC<PageProps> = ({ day }) => {
   
+
   return (
     <>
       <div className="app-component day-details mt-2 d-flex flex-column">
@@ -60,12 +61,6 @@ const Day: React.FC<PageProps> = ({ day }) => {
               </div>
             </>)
         }
-
-        <div className="py-3 mt-2 edit-day-button-container">
-          <button className="btn edit-day-button background-tertiary color-primary">
-            {day ? 'Edit Day' : 'Record Day'}
-          </button>
-        </div>
       </div>
     </>
   )

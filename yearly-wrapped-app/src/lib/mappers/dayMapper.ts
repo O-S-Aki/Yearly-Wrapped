@@ -1,5 +1,4 @@
-import type { IDay, ISimpleDay, IMood, 
-  ISong, IMealHealth } from "../interfaces";
+import type { IDay, ISimpleDay, IMood, ISong } from "../interfaces";
 
 export const mapResponseToDay = (data: any): IDay => {
   const day: IDay = {
@@ -10,7 +9,6 @@ export const mapResponseToDay = (data: any): IDay => {
     note: data.Note,
     mood: mapResponeToMood(data.Mood),
     song: mapResponseToSong(data.Song),
-    mealHealth: mapResponseToMealHealth(data.MealHealth),
   }
 
   return day;
@@ -42,16 +40,9 @@ export const mapResponseToSong = (data: any): ISong => {
     name: data.Name,
     artist: data.Artist,
     url: data.Url,
+    userId: data.UserId,
+    date: data.Date,
   }
 
   return song;
-}
-
-export const mapResponseToMealHealth = (data: any): IMealHealth => {
-  const mealHealth: IMealHealth = {
-    id: data.Id,
-    label: data.Label,
-  }
-
-  return mealHealth;
 }

@@ -1,4 +1,4 @@
-import type { IMood, ISong, IMealHealth } from './';
+import type { IMood, ISong, IMealHealth } from '../';
 
 export default interface IDay {
   id: string;

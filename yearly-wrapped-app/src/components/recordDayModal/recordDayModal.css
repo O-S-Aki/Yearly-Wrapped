@@ -1,0 +1,66 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: var(--overlay-dark);
+}
+
+.modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  width: 100%;
+}
+
+.record-day-modal {
+  border-radius: 2rem;
+  box-shadow: 0 10px 15px var(--outline-dark);
+}
+
+.record-day-modal-footer {
+  border-top: 1px solid var(--primary-dark);
+}
+
+.modal-action-button,
+.modal-action-button:hover,
+.modal-action-button:active {
+  background-color: var(--tertiary-dark);
+  color: var(--primary-dark);
+  border: 1px solid var(--primary-dark);
+}
+
+.close-modal {
+  cursor: pointer;
+}
+
+.day-section-container.modal-summary-section {
+  border-bottom: none;
+}
+
+.form-select {
+  border: 1px solid var(--primary-dark);
+}
+
+.mood-select-option {
+  border: 1px solid var(--primary-dark);
+}
+
+.mood-select-option:hover {
+  background-color: var(--primary-dark);
+  color: var(--background-dark);
+}
+
+.rating-option i {}
+
+.rating-option i::before {
+  border-radius: 50%;
+  box-shadow: 0 5px 5px var(--outline-dark);
+}
+
+.rating-label {
+  font-weight: 700;
+}

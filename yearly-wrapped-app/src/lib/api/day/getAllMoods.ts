@@ -1,5 +1,5 @@
 import { client } from "../../supabaseClient";
-import { mapResponeToMood } from "../../mappers";
+import { mapResponseToMood } from "../../mappers";
 
 import type { IMood } from "../../interfaces";
 
@@ -21,7 +21,7 @@ export const getAllMoods = async (): Promise<IMood[]> => {
   const moods: IMood[] = [];
 
   fetchedMoods.forEach((mood: any) => {
-    const mappedMood = mapResponeToMood(mood);
+    const mappedMood = mapResponseToMood(mood);
     moods.push(mappedMood);
   });
 

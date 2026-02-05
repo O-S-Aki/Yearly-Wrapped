@@ -1,5 +1,5 @@
 import { buildMonthGrid } from "./buildMonthGrid";
-import { filterDaysByMonth, datesAreEqual } from "./calendarUtil";
+import { filterDaysByMonth } from "./util";
 
 import type { ISimpleDay, ICalendarMonth, ICalendarDay } from "../interfaces";
 

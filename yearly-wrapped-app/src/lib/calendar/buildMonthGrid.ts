@@ -1,4 +1,4 @@
-import { convertDaysIntoWeeks, convertToISODate, datesAreEqual } from "./calendarUtil";
+import { convertDaysIntoWeeks, convertToISODate, datesAreEqual } from "./util";
 
 import type { ICalendarDay, ISimpleDay } from "../interfaces";
 

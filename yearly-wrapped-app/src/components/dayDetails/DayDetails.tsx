@@ -5,11 +5,11 @@ import type { IDay } from '../../lib/interfaces';
 
 import './dayDetails.css';
 
-interface PageProps {
+interface DayDetailsProps {
   day: IDay | null;
 }
 
-const Day: React.FC<PageProps> = ({ day }) => {
+const Day: React.FC<DayDetailsProps> = ({ day }) => {
   
 
   return (

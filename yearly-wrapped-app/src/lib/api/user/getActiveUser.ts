@@ -1,6 +1,6 @@
 import { client } from "../../supabaseClient"
 import type { IUser } from "../../interfaces";
-import { mapResponseToUser } from "../../mappers/userMapper";
+import { mapResponseToUser } from "../../mappers";
 
 export async function getActiveUser(): Promise<IUser> {
   const { data } = await client.auth.getUser();

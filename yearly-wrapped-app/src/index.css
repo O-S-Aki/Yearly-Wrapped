@@ -25,8 +25,9 @@
   --tertiary-dark: #dbdde4;
   --accent-dark: #ad6ba3;
   --outline-dark: rgba(22, 24, 29, 0.3);
+  --overlay-dark: rgba(0, 0, 0, 0.5);
 
-  --color-f: #ca0000;
+  --color-f: #750000;
   --color-d: #ff5e00;
   --color-c: #f1a037;
   --color-b: #fafd2f;

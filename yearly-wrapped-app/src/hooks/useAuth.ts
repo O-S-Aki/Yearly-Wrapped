@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { client } from '../lib/supabaseClient';
 
-import { mapResponseToSession } from '../lib/mappers/userMapper';
+import { mapResponseToSession } from '../lib/mappers';
 import type { ISession, IUser } from '../lib/interfaces';
 
 export default function useAuth() {

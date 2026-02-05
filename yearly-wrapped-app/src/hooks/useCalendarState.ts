@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { convertToISODate } from "../lib/calendar/calendarUtil";
+import { convertToISODate } from "../lib/calendar/util";
 import type { ICalendarState } from "../lib/interfaces";
 
 export default function useCalendarState(): ICalendarState {

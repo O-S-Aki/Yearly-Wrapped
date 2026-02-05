@@ -13,3 +13,5 @@ export { default as Carousel } from './carousel/Carousel';
 
 export { default as DayDetails } from './dayDetails/DayDetails';
 export { default as Analytics } from './analytics/Analytics';
+
+export { default as RecordDayModal } from './recordDayModal/RecordDayModal';

@@ -1,4 +1,5 @@
-import type { ISession, IUser } from "../interfaces";
+import { mapResponseToUser } from "..";
+import type { ISession } from "../../interfaces";
 
 export const mapResponseToSession = (data: any): ISession => {
   const session: ISession = {
@@ -11,13 +12,4 @@ export const mapResponseToSession = (data: any): ISession => {
   }
 
   return session;
-}
-
-export const mapResponseToUser = (data: any): IUser => {
-  const user: IUser = {
-    id: data.id ?? data.user.id,
-    email: data.email ?? data.user.email,
-  }
-
-  return user;
 }

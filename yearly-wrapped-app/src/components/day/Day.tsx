@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useState } from 'react';
 
 import { useDayDetails, useMoods } from '../../hooks';
 import { DayDetails, RecordDayModal } from '..'; 
 
-import { testUpsertDay } from '../../lib/calendar/testUpsert';
 import { formatDate } from '../../lib/calendar/util';
 
-import type { ICalendarState } from '../../lib/interfaces';
+import type { ICalendarState, IMood } from '../../lib/interfaces';
 
 import './day.css';
 
@@ -17,16 +16,26 @@ interface DayProps {
 }
 
 const Day: React.FC<DayProps> = ({ calendarState }) => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
   const isoDate: string = calendarState.selectedIsoDate;
   
   const { day } = useDayDetails(isoDate);
   const { moods } = useMoods();
+  
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedMood, setSelectedMood] = useState<IMood | null>(day ? day.mood : null);
+  
+  const handleSelectMood = (mood: IMood) => {
+    setSelectedMood(mood);
+  }
 
-  const handleUpsertDay = async () => {
-    await testUpsertDay(isoDate);
-  };
+  useEffect(() => {
+    if (day && day.mood) {
+      setSelectedMood(day.mood);
+    } 
+    else {
+      setSelectedMood(null);
+    }
+  }, [day]);
 
   return (
     <>
@@ -46,7 +55,7 @@ const Day: React.FC<DayProps> = ({ calendarState }) => {
           </div>
         </div>
 
-        <RecordDayModal isOpen={isModalOpen} date={isoDate} initialDay={day} moods={moods} onClose={() => setIsModalOpen(false)} />
+        <RecordDayModal isOpen={isModalOpen} date={isoDate} initialDay={day} moods={moods} selectedMood={selectedMood} onClose={() => setIsModalOpen(false)} onSelectMood={handleSelectMood} />
       </div>
     </>
   )

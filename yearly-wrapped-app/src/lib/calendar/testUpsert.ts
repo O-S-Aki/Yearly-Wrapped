@@ -20,7 +20,7 @@ export const testUpsertDay = async(date: string) => {
 
   const dayInput: IDayInput = {
     date: date,
-    moodId: 2,
+    moodId: 6,
     song: {
       name: "Coming Down",
       artist: "Dum Dum girls",

@@ -1,27 +1,3 @@
-.color-f {
-  color: var(--color-f);
-}
-
-.color-d {
-  color: var(--color-d);
-}
-
-.color-c {
-  color: var(--color-c);
-}
-
-.color-b {
-  color: var(--color-b);
-}
-
-.color-a {
-  color: var(--color-a);
-}
-
-.color-s {
-  color: var(--color-s);
-}
-
 .color-text {
   color: var(--text-dark);
 }
@@ -68,4 +44,52 @@
 
 .background-accent {
   background-color: var(--accent-dark);
+}
+
+.color-f {
+  color: var(--color-f);
+}
+
+.color-d {
+  color: var(--color-d);
+}
+
+.color-c {
+  color: var(--color-c);
+}
+
+.color-b {
+  color: var(--color-b);
+}
+
+.color-a {
+  color: var(--color-a);
+}
+
+.color-s {
+  color: var(--color-s);
+}
+
+.background-f {
+  background-color: var(--color-f);
+}
+
+.background-d {
+  background-color: var(--color-d);
+}
+
+.background-c {
+  background-color: var(--color-c);
+}
+
+.background-b {
+  background-color: var(--color-b);
+}
+
+.background-a {
+  background-color: var(--color-a);
+}
+
+.background-s {
+  background-color: var(--color-s);
 }

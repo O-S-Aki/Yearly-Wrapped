@@ -15,3 +15,4 @@ export { default as DayDetails } from './dayDetails/DayDetails';
 export { default as Analytics } from './analytics/Analytics';
 
 export { default as RecordDayModal } from './recordDayModal/RecordDayModal';
+export { default as MoodSelect } from './moodSelect/MoodSelect';  

@@ -7,3 +7,4 @@ export { default as useDaysOfYear } from './useDaysOfYear';
 export { default as useCalendarState } from './useCalendarState';
 
 export { default as useMoods } from './useMoods';
+export { default as useDayInput } from './useDayInput';

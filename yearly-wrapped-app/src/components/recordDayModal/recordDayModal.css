@@ -40,27 +40,3 @@
 .day-section-container.modal-summary-section {
   border-bottom: none;
 }
-
-.form-select {
-  border: 1px solid var(--primary-dark);
-}
-
-.mood-select-option {
-  border: 1px solid var(--primary-dark);
-}
-
-.mood-select-option:hover {
-  background-color: var(--primary-dark);
-  color: var(--background-dark);
-}
-
-.rating-option i {}
-
-.rating-option i::before {
-  border-radius: 50%;
-  box-shadow: 0 5px 5px var(--outline-dark);
-}
-
-.rating-label {
-  font-weight: 700;
-}

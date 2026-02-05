@@ -15,7 +15,6 @@ export default function useMoods() {
       setMoods(allMoods);
       
       setLoading(false);
-      console.log(allMoods);
     };
 
     fetchMoods();

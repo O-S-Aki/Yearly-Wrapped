@@ -1,20 +1,27 @@
 import React from 'react';
 
-import type { IDay, IDayInput, IMood } from '../../lib/interfaces';
+import { MoodSelect } from '../';
+import { useDayInput } from '../../hooks';
+import { formatDate } from '../../lib/calendar/util';
+
+import type { IDay, IMood } from '../../lib/interfaces';
 
 import './recordDayModal.css';
-import { formatDate } from '../../lib/calendar/util';
 
 interface RecordDayModalProps {
   isOpen: boolean;
   date: string;
   initialDay: IDay | null;
   moods: IMood[];
+  selectedMood: IMood | null;
   onClose: () => void;
+  onSelectMood: (mood: IMood) => void;
   //onSaveDay: (editedDay: IDayInput) => Promise<void>;
 }
 
-const RecordDayModal: React.FC<RecordDayModalProps> = ({ isOpen, date, initialDay, moods, onClose }) => {
+const RecordDayModal: React.FC<RecordDayModalProps> = ({ isOpen, date, initialDay, moods, selectedMood, onClose, onSelectMood }) => {
+  const { dayInput } = useDayInput(initialDay);
+  
   if (!isOpen) return null;
 
   return (
@@ -29,29 +36,15 @@ const RecordDayModal: React.FC<RecordDayModalProps> = ({ isOpen, date, initialDa
             <div className="record-day-modal-body">
               <div className="day-section-container py-3">
                 <h5 className="detail-section-title">Rating</h5>
-                <div className="rating-selection-container">
-                  {
-                    moods.map((mood) => (
-                      <div className="rating-option my-2">
-                        <h6 className='m-0'><i className={`bi bi-circle-fill me-2 color-${mood.label.toLowerCase()}`}></i> <span className='rating-label'> {mood.label} </span> - {mood.description}</h6>
-                      </div>
-                    ))
-                  }
-                </div>
-                
-                {/*<select className="form-select background-tertiary">
-                  {moods.map((mood) => (
-                    <option key={mood.id} value={mood.id} className='mood-select-option'>
-                      {mood.description}
-                    </option>
-                  ))}
-                </select>*/}
+                <MoodSelect moods={moods} selectedMood={selectedMood} onSelectMood={onSelectMood} />
               </div>
               <div className="day-section-container py-3 mt-2">
                 <h5 className="detail-section-title">Song of the Day</h5>
+                <p>{dayInput.song?.name || 'No song selected'}</p>
               </div>
               <div className="day-section-container modal-summary-section py-3 mt-2">
                 <h5 className="detail-section-title">Summary</h5>
+                <textarea className="form-control summary-input" placeholder="Write a summary of your day..." value={dayInput.note || ''}></textarea>
               </div>
             </div>
             <div className="record-day-modal-footer d-flex flex-row justify-content-end align-items-center gap-2 pt-3">

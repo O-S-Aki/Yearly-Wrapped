@@ -1,7 +1,8 @@
 import React from 'react';
 
+import { useDayRecordState } from '../../hooks';
+
 import { MoodSelect } from '../';
-import { useDayInput } from '../../hooks';
 import { formatDate } from '../../lib/calendar/util';
 
 import type { IDay, IMood } from '../../lib/interfaces';
@@ -16,12 +17,11 @@ interface RecordDayModalProps {
   selectedMood: IMood | null;
   onClose: () => void;
   onSelectMood: (mood: IMood) => void;
-  //onSaveDay: (editedDay: IDayInput) => Promise<void>;
 }
 
 const RecordDayModal: React.FC<RecordDayModalProps> = ({ isOpen, date, initialDay, moods, selectedMood, onClose, onSelectMood }) => {
-  const { dayInput } = useDayInput(initialDay);
-  
+  const dayRecordState = useDayRecordState(initialDay, date);
+
   if (!isOpen) return null;
 
   return (
@@ -34,18 +34,37 @@ const RecordDayModal: React.FC<RecordDayModalProps> = ({ isOpen, date, initialDa
               <h3 className="bi bi-x-square-fill m-0 color-primary close-modal" onClick={onClose}></h3>
             </div>
             <div className="record-day-modal-body">
+              
               <div className="day-section-container py-3">
                 <h5 className="detail-section-title">Rating</h5>
                 <MoodSelect moods={moods} selectedMood={selectedMood} onSelectMood={onSelectMood} />
               </div>
-              <div className="day-section-container py-3 mt-2">
+
+              <div className="day-section-container form-section py-3 mt-1">
                 <h5 className="detail-section-title">Song of the Day</h5>
-                <p>{dayInput.song?.name || 'No song selected'}</p>
+                <div className="row mt-2">
+                  <div className="col col-12">
+                    <p className="ms-1 mb-0">Name</p>
+                    <input className='form-control' type='text' value={dayRecordState.songName} onChange={(e) => dayRecordState.changeSongName(e.target.value)} />
+                  </div>
+                </div>
+                <div className="row mt-2">
+                  <div className="col col-12 col-md-6">
+                    <p className="ms-1 mb-0">Artist</p>
+                    <input className='form-control' type='text' value={dayRecordState.songArtist} onChange={(e) => dayRecordState.changeSongArtist(e.target.value)} />
+                  </div>
+                  <div className="col col-12 col-md-6">
+                    <p className="ms-1 mb-0">Spotify URL</p>
+                    <input className='form-control' type='text' value={dayRecordState.songUrl} onChange={(e) => dayRecordState.changeSongUrl(e.target.value)} />
+                  </div>
+                </div>
               </div>
-              <div className="day-section-container modal-summary-section py-3 mt-2">
+
+              <div className="day-section-container modal-summary-section py-3 mt-1">
                 <h5 className="detail-section-title">Summary</h5>
-                <textarea className="form-control summary-input" placeholder="Write a summary of your day..." value={dayInput.note || ''}></textarea>
+                <textarea className="form-control summary-input" maxLength={900} rows={3} value={dayRecordState.note} onChange={(e) => dayRecordState.changeNote(e.target.value)}></textarea>
               </div>
+
             </div>
             <div className="record-day-modal-footer d-flex flex-row justify-content-end align-items-center gap-2 pt-3">
               <button className="btn modal-action-button" onClick={onClose}> <i className="bi bi-x-lg me-1"></i> Cancel </button>

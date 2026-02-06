@@ -18,7 +18,7 @@ interface DayProps {
 const Day: React.FC<DayProps> = ({ calendarState }) => {
   const isoDate: string = calendarState.selectedIsoDate;
   
-  const { day } = useDayDetails(isoDate);
+  const { day, refreshDayDetails } = useDayDetails(isoDate);
   const { moods } = useMoods();
   
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -26,6 +26,12 @@ const Day: React.FC<DayProps> = ({ calendarState }) => {
   
   const handleSelectMood = (mood: IMood) => {
     setSelectedMood(mood);
+  }
+
+  const handleCloseModal = () => {
+    setSelectedMood(day ? day.mood : null);
+    refreshDayDetails(isoDate);
+    setIsModalOpen(false);
   }
 
   useEffect(() => {
@@ -55,7 +61,7 @@ const Day: React.FC<DayProps> = ({ calendarState }) => {
           </div>
         </div>
 
-        <RecordDayModal isOpen={isModalOpen} date={isoDate} initialDay={day} moods={moods} selectedMood={selectedMood} onClose={() => setIsModalOpen(false)} onSelectMood={handleSelectMood} />
+        <RecordDayModal isOpen={isModalOpen} date={isoDate} initialDay={day} moods={moods} selectedMood={selectedMood} onClose={() => handleCloseModal()} onSelectMood={handleSelectMood} />
       </div>
     </>
   )

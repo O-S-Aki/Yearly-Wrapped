@@ -11,13 +11,17 @@ export default function useDayDetails(date: string) {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    refreshDayDetails();
+  }, [user, date])
+
+  function refreshDayDetails(isoDate?: string | null) {
     if (user) {
       let cancelled: boolean = false;
 
       async function loadDay() {
         setLoading(true);
 
-        const dayDetails: IDay | null = await getDayByDate(user!.id, date);
+        const dayDetails: IDay | null = await getDayByDate(user!.id, isoDate ?? date);
         setDay(dayDetails);
 
         setLoading(false);
@@ -32,7 +36,7 @@ export default function useDayDetails(date: string) {
     else {
       return;
     }
-  }, [user, date])
+  }
 
-  return { day, loading };
+  return { day, loading, refreshDayDetails };
 }

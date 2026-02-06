@@ -40,3 +40,16 @@
 .day-section-container.modal-summary-section {
   border-bottom: none;
 }
+
+.form-control {
+  border: 1px solid var(--primary-dark);
+}
+
+.summary-input {
+  resize: none;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: 1px solid var(--primary-dark);
+}

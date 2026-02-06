@@ -12,7 +12,9 @@ export type { default as IMealHealth } from './entity/IMealHealth';
 
 export type { default as ICalendarMonth } from './viewModel/ICalendarMonth';
 export type { default as ICalendarDay } from './viewModel/ICalendarDay';
-export type { default as ICalendarState } from './state/ICalendarState';
 
-export type { default as IDayInput } from './upsertModel/IDayInput';
-export type { default as ISongInput } from './upsertModel/ISongInput';
+export type { default as ICalendarState } from './state/ICalendarState';
+export type { default as IDayRecordState } from './state/IDayRecordState';
+
+export type { default as IDayInput } from './upsertModel/IDayUpsertModel';
+export type { default as ISongInput } from './upsertModel/ISongUpsertModel';

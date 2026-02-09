@@ -15,19 +15,19 @@ export default function useDayRecordState(initialDay: IDay | null, date: string)
     setNote(initialDay?.note || '');
   }, [initialDay, date])
 
-  function changeSongName(name: string) {
+  const changeSongName = (name: string) => {
     setSongName(name);
   }
 
-  function changeSongArtist(artist: string) {
+  const changeSongArtist = (artist: string) => {
     setSongArtist(artist);
   }
 
-  function changeSongUrl(url: string) {
+  const changeSongUrl = (url: string) => {
     setSongUrl(url);
   }
 
-  function changeNote(note: string) {
+  const changeNote = (note: string) => {
     setNote(note);
   }
 

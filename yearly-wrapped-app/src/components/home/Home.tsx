@@ -11,6 +11,8 @@ interface PageProps {
 const Home: React.FC<PageProps> = ({ }) => {
   const calendarState = useCalendarState();
 
+  
+
   return (
     <>
       <div className="app-page d-flex flex-column mt-3 py-3 px-2 gap-4">

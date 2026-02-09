@@ -16,5 +16,5 @@ export type { default as ICalendarDay } from './viewModel/ICalendarDay';
 export type { default as ICalendarState } from './state/ICalendarState';
 export type { default as IDayRecordState } from './state/IDayRecordState';
 
-export type { default as IDayInput } from './upsertModel/IDayUpsertModel';
-export type { default as ISongInput } from './upsertModel/ISongUpsertModel';
+export type { default as IDayUpsertModel } from './upsertModel/IDayUpsertModel';
+export type { default as ISongUpsertModel } from './upsertModel/ISongUpsertModel';

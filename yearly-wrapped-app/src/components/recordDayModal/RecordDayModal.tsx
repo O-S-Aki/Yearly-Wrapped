@@ -5,7 +5,7 @@ import { useDayRecordState } from '../../hooks';
 import { MoodSelect } from '../';
 import { formatDate } from '../../lib/calendar/util';
 
-import type { IDay, IMood } from '../../lib/interfaces';
+import type { IDay, IMood, IDayRecordState } from '../../lib/interfaces';
 
 import './recordDayModal.css';
 
@@ -17,9 +17,10 @@ interface RecordDayModalProps {
   selectedMood: IMood | null;
   onClose: () => void;
   onSelectMood: (mood: IMood) => void;
+  onRecordDay: (dayRecordState: IDayRecordState, mood: IMood | null) => void;
 }
 
-const RecordDayModal: React.FC<RecordDayModalProps> = ({ isOpen, date, initialDay, moods, selectedMood, onClose, onSelectMood }) => {
+const RecordDayModal: React.FC<RecordDayModalProps> = ({ isOpen, date, initialDay, moods, selectedMood, onClose, onSelectMood, onRecordDay }) => {
   const dayRecordState = useDayRecordState(initialDay, date);
 
   if (!isOpen) return null;
@@ -62,13 +63,17 @@ const RecordDayModal: React.FC<RecordDayModalProps> = ({ isOpen, date, initialDa
 
               <div className="day-section-container modal-summary-section py-3 mt-1">
                 <h5 className="detail-section-title">Summary</h5>
-                <textarea className="form-control summary-input" maxLength={900} rows={3} value={dayRecordState.note} onChange={(e) => dayRecordState.changeNote(e.target.value)}></textarea>
+                <textarea className="form-control summary-input" maxLength={650} rows={3} value={dayRecordState.note} onChange={(e) => dayRecordState.changeNote(e.target.value)}></textarea>
               </div>
 
             </div>
             <div className="record-day-modal-footer d-flex flex-row justify-content-end align-items-center gap-2 pt-3">
-              <button className="btn modal-action-button" onClick={onClose}> <i className="bi bi-x-lg me-1"></i> Cancel </button>
-              <button className="btn modal-action-button"> <i className="bi bi-floppy me-1"></i> Save </button>
+              <button className="btn modal-action-button" onClick={onClose}>
+                <i className="bi bi-x-lg me-1"></i> Cancel 
+              </button>
+              <button className="btn modal-action-button" onClick={() => onRecordDay(dayRecordState, selectedMood)}> 
+                <i className="bi bi-floppy me-1"></i> Save 
+              </button>
             </div>
           </div>
         </div>

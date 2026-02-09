@@ -16,8 +16,6 @@ export default function useDayDetails(date: string) {
 
   function refreshDayDetails(isoDate?: string | null) {
     if (user) {
-      let cancelled: boolean = false;
-
       async function loadDay() {
         setLoading(true);
 
@@ -28,10 +26,6 @@ export default function useDayDetails(date: string) {
       }
 
       loadDay();
-
-      return () => {
-        cancelled = true;
-      }
     }
     else {
       return;

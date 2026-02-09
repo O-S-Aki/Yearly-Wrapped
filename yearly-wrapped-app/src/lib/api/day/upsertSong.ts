@@ -1,9 +1,9 @@
 import { client } from '../../supabaseClient';
 import { mapResponseToSong } from '../../mappers';
 
-import type { ISong, ISongInput } from '../../interfaces';
+import type { ISong, ISongUpsertModel } from '../../interfaces';
 
-export async function upsertSong(userId: string, date: string, songInput: ISongInput): Promise<ISong | null> {
+export async function upsertSong(userId: string, date: string, songInput: ISongUpsertModel): Promise<ISong | null> {
   const response = await client
   .from("Song")
   .upsert(
@@ -25,8 +25,6 @@ export async function upsertSong(userId: string, date: string, songInput: ISongI
     Date
   `)
   .single();
-
-  console.log(response);
 
   if (response.error) {
     throw response.error;

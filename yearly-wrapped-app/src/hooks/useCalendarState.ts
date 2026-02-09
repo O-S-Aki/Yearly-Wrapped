@@ -11,7 +11,7 @@ export default function useCalendarState(): ICalendarState {
   const [visibleYear, setVisibleYear] = useState<number>(currentDay.getFullYear());
   const [visibleMonth, setVisibleMonth] = useState<number>(currentDay.getMonth() + 1);
 
-  function changeMonth(year: number, month: number) {
+  const changeMonth = (year: number, month: number) => {
     const date: Date = new Date(year, month - 1, 1);
     setSelectedDate(date);
     setSelectedIsoDate(convertToISODate(date));
@@ -20,7 +20,7 @@ export default function useCalendarState(): ICalendarState {
     setVisibleMonth(month);
   }
 
-  function selectDay(date: Date) {
+  const selectDay = (date: Date) => {
     setSelectedDate(date);
     setSelectedIsoDate(convertToISODate(date));
   }

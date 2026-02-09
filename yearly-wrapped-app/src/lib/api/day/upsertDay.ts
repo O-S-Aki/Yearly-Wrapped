@@ -3,9 +3,9 @@ import { client } from '../../supabaseClient';
 import { upsertSong } from './upsertSong';
 import { mapResponseToDay } from '../../mappers';
 
-import type { IDay, IDayInput, ISong } from '../../interfaces';
+import type { IDay, IDayUpsertModel, ISong } from '../../interfaces';
 
-export async function upsertDay(userId: string, dayInput: IDayInput): Promise<IDay | null> {
+export async function upsertDay(userId: string, dayInput: IDayUpsertModel): Promise<IDay | null> {
   const songInput: ISong | null = dayInput.song ? await upsertSong(userId, dayInput.date, dayInput.song) : null;
 
   const response = await client
@@ -40,8 +40,6 @@ export async function upsertDay(userId: string, dayInput: IDayInput): Promise<ID
     )
   `)
   .single();
-
-  console.log(response);
 
   if (response.error) {
     throw response.error;

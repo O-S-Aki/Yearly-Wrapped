@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-import { useDayDetails, useMoods } from '../../hooks';
+import { useAuth, useDayDetails, useMoods } from '../../hooks';
 import { DayDetails, RecordDayModal } from '..'; 
 
 import { formatDate } from '../../lib/calendar/util';
+import { upsertDay } from '../../lib/api/day';
 
-import type { ICalendarState, IMood } from '../../lib/interfaces';
+import type { ICalendarState, IDay, IDayRecordState, IDayUpsertModel, IMood, ISongUpsertModel } from '../../lib/interfaces';
 
 import './day.css';
 
@@ -18,11 +19,38 @@ interface DayProps {
 const Day: React.FC<DayProps> = ({ calendarState }) => {
   const isoDate: string = calendarState.selectedIsoDate;
   
+  const { user } = useAuth();
+
   const { day, refreshDayDetails } = useDayDetails(isoDate);
   const { moods } = useMoods();
   
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedMood, setSelectedMood] = useState<IMood | null>(day ? day.mood : null);
+
+  const handleRecordDay = async (dayRecordState: IDayRecordState, mood: IMood | null) => {
+    if (user && mood && dayRecordState) {
+      const songUpsertModel: ISongUpsertModel = {
+        name: dayRecordState.songName,
+        artist: dayRecordState.songArtist,
+        url: dayRecordState.songUrl,
+      }
+      
+      const dayUpsertModel: IDayUpsertModel = {
+        date: calendarState.selectedIsoDate,
+        moodId: mood.id,
+        song: songUpsertModel,
+        note: dayRecordState.note,
+      }
+
+      const updatedDay: IDay | null = await upsertDay(user.id, dayUpsertModel);
+      console.log(updatedDay);
+
+      if (updatedDay) {
+        refreshDayDetails(isoDate);
+        setIsModalOpen(false);
+      }
+    }
+  }
   
   const handleSelectMood = (mood: IMood) => {
     setSelectedMood(mood);
@@ -61,7 +89,7 @@ const Day: React.FC<DayProps> = ({ calendarState }) => {
           </div>
         </div>
 
-        <RecordDayModal isOpen={isModalOpen} date={isoDate} initialDay={day} moods={moods} selectedMood={selectedMood} onClose={() => handleCloseModal()} onSelectMood={handleSelectMood} />
+        <RecordDayModal isOpen={isModalOpen} date={isoDate} initialDay={day} moods={moods} selectedMood={selectedMood} onClose={() => handleCloseModal()} onSelectMood={handleSelectMood} onRecordDay={handleRecordDay} />
       </div>
     </>
   )

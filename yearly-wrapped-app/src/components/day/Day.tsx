@@ -1,76 +1,29 @@
 import React from 'react';
 
-import { useState, useEffect } from 'react';
-
-import { useAuth, useDayDetails, useMoods } from '../../hooks';
+import { useMoods } from '../../hooks';
 import { DayDetails, RecordDayModal } from '..'; 
 
 import { formatDate } from '../../lib/calendar/util';
-import { upsertDay } from '../../lib/api/day';
 
-import type { ICalendarState, IDay, IDayRecordState, IDayUpsertModel, IMood, ISongUpsertModel } from '../../lib/interfaces';
+import type { ICalendarState, IDay, IDayRecordState, IMood } from '../../lib/interfaces';
 
 import './day.css';
 
 interface DayProps {
-  calendarState: ICalendarState
+  calendarState: ICalendarState;
+  day: IDay | null;
+  isModalOpen: boolean;
+  selectedMood: IMood | null;
+  onSelectMood: (mood: IMood) => void;
+  onOpenModal: () => void;
+  onCloseModal: () => void;
+  onRecordDay: (dayRecordState: IDayRecordState, mood: IMood | null) => void;
 }
 
-const Day: React.FC<DayProps> = ({ calendarState }) => {
+const Day: React.FC<DayProps> = ({ calendarState, day, isModalOpen, selectedMood, onSelectMood, onOpenModal, onCloseModal, onRecordDay }) => {
   const isoDate: string = calendarState.selectedIsoDate;
-  
-  const { user } = useAuth();
-
-  const { day, refreshDayDetails } = useDayDetails(isoDate);
   const { moods } = useMoods();
   
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [selectedMood, setSelectedMood] = useState<IMood | null>(day ? day.mood : null);
-
-  const handleRecordDay = async (dayRecordState: IDayRecordState, mood: IMood | null) => {
-    if (user && mood && dayRecordState) {
-      const songUpsertModel: ISongUpsertModel = {
-        name: dayRecordState.songName,
-        artist: dayRecordState.songArtist,
-        url: dayRecordState.songUrl,
-      }
-      
-      const dayUpsertModel: IDayUpsertModel = {
-        date: calendarState.selectedIsoDate,
-        moodId: mood.id,
-        song: songUpsertModel,
-        note: dayRecordState.note,
-      }
-
-      const updatedDay: IDay | null = await upsertDay(user.id, dayUpsertModel);
-      console.log(updatedDay);
-
-      if (updatedDay) {
-        refreshDayDetails(isoDate);
-        setIsModalOpen(false);
-      }
-    }
-  }
-  
-  const handleSelectMood = (mood: IMood) => {
-    setSelectedMood(mood);
-  }
-
-  const handleCloseModal = () => {
-    setSelectedMood(day ? day.mood : null);
-    refreshDayDetails(isoDate);
-    setIsModalOpen(false);
-  }
-
-  useEffect(() => {
-    if (day && day.mood) {
-      setSelectedMood(day.mood);
-    } 
-    else {
-      setSelectedMood(null);
-    }
-  }, [day]);
-
   return (
     <>
       <div className="app-component day-container">
@@ -83,13 +36,13 @@ const Day: React.FC<DayProps> = ({ calendarState }) => {
           </div>
 
           <div className="py-3 mt-2 edit-day-button-container">
-            <button className="btn edit-day-button background-tertiary color-primary" onClick={() => setIsModalOpen(true)}>
+            <button className="btn edit-day-button background-tertiary color-primary" onClick={() => onOpenModal()}>
               {day ? 'Edit Day' : 'Record Day'}
             </button>
           </div>
         </div>
 
-        <RecordDayModal isOpen={isModalOpen} date={isoDate} initialDay={day} moods={moods} selectedMood={selectedMood} onClose={() => handleCloseModal()} onSelectMood={handleSelectMood} onRecordDay={handleRecordDay} />
+        <RecordDayModal isOpen={isModalOpen} date={isoDate} initialDay={day} moods={moods} selectedMood={selectedMood} onClose={() => onCloseModal()} onSelectMood={onSelectMood} onRecordDay={onRecordDay} />
       </div>
     </>
   )

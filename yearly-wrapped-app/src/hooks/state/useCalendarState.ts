@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-import { convertToISODate } from "../lib/calendar/util";
-import type { ICalendarState } from "../lib/interfaces";
+import { convertToISODate } from "../../lib/calendar/util";
+import type { ICalendarState } from "../../lib/interfaces";
 
 export default function useCalendarState(): ICalendarState {
   const currentDay = new Date()

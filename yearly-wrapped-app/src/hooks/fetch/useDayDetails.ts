@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-import { useAuth } from './';
-import { getDayByDate } from '../lib/api/day';
+import { useAuth } from '../';
+import { getDayByDate } from '../../lib/api/day';
 
-import type { IDay } from '../lib/interfaces';
+import type { IDay } from '../../lib/interfaces';
 
 export default function useDayDetails(date: string) {
   const { user } = useAuth();

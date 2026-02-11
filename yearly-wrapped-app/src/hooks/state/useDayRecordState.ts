@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import type { IDay } from '../lib/interfaces';
+import type { IDay, IDayRecordState } from '../../lib/interfaces';
 
-export default function useDayRecordState(initialDay: IDay | null, date: string) {
+export default function useDayRecordState(initialDay: IDay | null, date: string): IDayRecordState {
   const [songName, setSongName] = useState<string>(initialDay?.song?.name || '');
   const [songArtist, setSongArtist] = useState<string>(initialDay?.song?.artist || '');
   const [songUrl, setSongUrl] = useState<string>(initialDay?.song?.url || '');

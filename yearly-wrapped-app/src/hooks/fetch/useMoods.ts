@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-import { getAllMoods } from '../lib/api/day';
-import type { IMood } from '../lib/interfaces';
+import { getAllMoods } from '../../lib/api/day';
+import type { IMood } from '../../lib/interfaces';
 
 export default function useMoods() {
   const [moods, setMoods] = useState<IMood[]>([]);

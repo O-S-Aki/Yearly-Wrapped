@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-import { client } from '../lib/supabaseClient';
+import { client } from '../../lib/supabaseClient';
 
-import { mapResponseToSession } from '../lib/mappers';
-import type { ISession, IUser } from '../lib/interfaces';
+import { mapResponseToSession } from '../../lib/mappers';
+import type { ISession, IUser } from '../../lib/interfaces';
 
 export default function useAuth() {
   const [user, setUser] = useState<IUser | null>(null);

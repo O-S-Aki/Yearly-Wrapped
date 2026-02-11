@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-import { useAuth } from './';
-import { getDaysByMonth } from '../lib/api/day';
+import { useAuth } from '../';
+import { getDaysByMonth } from '../../lib/api/day';
 
-import type { ISimpleDay } from '../lib/interfaces';
+import type { ISimpleDay } from '../../lib/interfaces';
 
 export default function useDaysOfMonth(year: number, month: number) {
   const { user } = useAuth();

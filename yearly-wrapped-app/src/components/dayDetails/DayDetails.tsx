@@ -14,11 +14,11 @@ const Day: React.FC<DayDetailsProps> = ({ day }) => {
 
   return (
     <>
-      <div className="app-component day-details mt-2 d-flex flex-column">
+      <div className="app-component day-details d-flex flex-column">
         {
           day ? (
             <>
-              <div className="day-section-container py-3">
+              <div className="day-section-container py-3 mt-1">
                 <h5 className="mb-2 detail-section-title color-primary">Rating</h5>
                 <div className="d-flex flex-row gap-3 align-items-center">
                   <h3 className='m-0'><i className={`bi bi-circle-fill day-rating-icon color-${day.mood.label.toLowerCase()}`}></i></h3>
@@ -31,7 +31,7 @@ const Day: React.FC<DayDetailsProps> = ({ day }) => {
               {
                 day.song ? (
                 <>
-                  <div className="day-section-container py-3 mt-2">
+                  <div className="day-section-container py-3 mt-1">
                     <h5 className="mb-2 detail-section-title color-primary">Song of the Day</h5>
                     <div className="d-flex flex-row align-items-center gap-3">
                       <Link to={day.song.url} target="_blank">
@@ -48,7 +48,7 @@ const Day: React.FC<DayDetailsProps> = ({ day }) => {
                 </>) : (<></>)
               }
 
-              <div className="day-section-container py-3 mt-2">
+              <div className="day-section-container py-3 mt-1">
                 <h5 className="mb-2 detail-section-title color-primary">Summary</h5>
                 <p className="m-0 color-primary">{day.note ?? 'No summary has been recorded for this day.'}</p>
               </div>

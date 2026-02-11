@@ -17,7 +17,8 @@
 
 .mood-indicator i::before {
   border-radius: 50%;
-  box-shadow: 0 3px 5px var(--accent-dark);
+  box-shadow: 0 3px 6px var(--accent-dark);
+  outline: none;
 }
 
 .date.color-secondary {

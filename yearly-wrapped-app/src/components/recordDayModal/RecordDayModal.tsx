@@ -59,7 +59,7 @@ const RecordDayModal: React.FC<RecordDayModalProps> = ({ dayComponentState, mood
 
               <div className="day-section-container modal-summary-section py-3 mt-1">
                 <h5 className="detail-section-title">Summary</h5>
-                <textarea className="form-control summary-input" maxLength={650} rows={3} value={dayRecordState.note} onChange={(e) => dayRecordState.changeNote(e.target.value)}></textarea>
+                <textarea className="form-control summary-input" maxLength={600} rows={3} value={dayRecordState.note} onChange={(e) => dayRecordState.changeNote(e.target.value)}></textarea>
               </div>
 
             </div>

@@ -29,7 +29,7 @@ const Day: React.FC<DayProps> = ({ isoDate, state, onSave }) => {
             <DayDetails day={state.day} />
           </div>
 
-          <div className="py-3 mt-2 edit-day-button-container">
+          <div className="py-3 mt-1 edit-day-button-container">
             <button className="btn edit-day-button background-tertiary color-primary" onClick={() => state.openModal()}>
               {state.day ? 'Edit Day' : 'Record Day'}
             </button>

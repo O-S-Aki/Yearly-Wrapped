@@ -1,10 +1,11 @@
 .detail-section-title {
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
 .day-section-container {
   border-bottom: 1px solid var(--outline-dark);
+  width: 100%;
 }
 
 .day-rating-icon::before {
@@ -25,13 +26,21 @@
   cursor: pointer
 }
 
+.song-image-container.no-link {
+  cursor: default;
+}
+
 .song-of-the-day-title {
-  font-weight: 600;
   text-transform: uppercase;
+  font-weight: 500;
+}
+
+.song-of-the-day-artist {
+  font-size: smaller;
 }
 
 .song-play-button {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 .edit-day-button {

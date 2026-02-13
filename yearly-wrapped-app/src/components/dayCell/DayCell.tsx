@@ -19,7 +19,7 @@ const DayCell: React.FC<DayCellProps> = ({ day }) => {
               <h6 className={`date text-center m-0 prevent-select ${day.isCurrentMonth ? 'color-primary' : 'color-secondary'}`}>{day.dayNumber}</h6>
             </div>
             {
-              day.isCurrentMonth && day.entry?.mood ? (
+              day.entry?.mood ? (
                 <>
                   <div className="mood-indicator d-flex flex-column">
                     <i className={`bi bi-circle-fill color-${day.entry.mood.label.toLowerCase()}`}></i>

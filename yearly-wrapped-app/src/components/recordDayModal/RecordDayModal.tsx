@@ -34,10 +34,15 @@ const RecordDayModal: React.FC<RecordDayModalProps> = ({ dayComponentState, mood
               
               <div className="day-section-container py-3">
                 <h5 className="detail-section-title">Rating</h5>
-                <MoodSelect moods={moods} selectedMood={dayComponentState.selectedMood} onSelectMood={dayComponentState.selectMood} />
+                <MoodSelect moods={moods} selectedMood={dayComponentState.selectedMood} editable={true} onSelectMood={dayComponentState.selectMood} />
               </div>
 
-              <div className="day-section-container form-section py-3 mt-1">
+              <div className="day-section-container modal-summary-section py-3 mt-1">
+                <h5 className="detail-section-title">Summary</h5>
+                <textarea className="form-control summary-input" maxLength={650} rows={3} value={dayRecordState.note} onChange={(e) => dayRecordState.changeNote(e.target.value)}></textarea>
+              </div>
+
+              <div className="day-section-container modal-song-section form-section py-3 mt-1">
                 <h5 className="detail-section-title">Song of the Day</h5>
                 <div className="row mt-2">
                   <div className="col col-12">
@@ -55,11 +60,6 @@ const RecordDayModal: React.FC<RecordDayModalProps> = ({ dayComponentState, mood
                     <input className='form-control' type='text' value={dayRecordState.songUrl} onChange={(e) => dayRecordState.changeSongUrl(e.target.value)} />
                   </div>
                 </div>
-              </div>
-
-              <div className="day-section-container modal-summary-section py-3 mt-1">
-                <h5 className="detail-section-title">Summary</h5>
-                <textarea className="form-control summary-input" maxLength={600} rows={3} value={dayRecordState.note} onChange={(e) => dayRecordState.changeNote(e.target.value)}></textarea>
               </div>
 
             </div>

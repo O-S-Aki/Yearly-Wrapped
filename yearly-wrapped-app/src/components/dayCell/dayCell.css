@@ -12,12 +12,12 @@
   position: absolute;
   font-size: smaller;
   top: 7%;
-  right: 10%;
+  right: 12%;
 }
 
 .mood-indicator i::before {
   border-radius: 50%;
-  box-shadow: 0 3px 6px var(--accent-dark);
+  box-shadow: 0 2px 5px var(--primary-dark);
   outline: none;
 }
 

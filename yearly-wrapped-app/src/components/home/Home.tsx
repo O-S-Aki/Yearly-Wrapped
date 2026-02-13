@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Month, Day, Analytics } from '../';
-import { useAuth, useCalendarState, useDayComponentState, useMonthComponentState } from '../../hooks';
+import { Month, Day, Year } from '../';
+import { useAuth, useCalendarState, useDayComponentState, useMonthComponentState, useMoods } from '../../hooks';
 
 import type { IDayRecordState, IMood } from '../../lib/interfaces';
 
@@ -12,6 +12,7 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ }) => {
   const { user } = useAuth();
+  const { moods } = useMoods();
   const calendarState = useCalendarState();
 
   const isoDate: string = calendarState.selectedIsoDate;
@@ -21,7 +22,6 @@ const Home: React.FC<HomeProps> = ({ }) => {
 
   const handleSaveAndRefetchCalendar = async (dayRecordState: IDayRecordState, mood: IMood | null) => {
     const success = await dayComponentState.recordDay(dayRecordState, mood);
-    console.log('Save successful:', success);
 
     if (success) {
       monthComponentState.updateCalendar();
@@ -30,18 +30,18 @@ const Home: React.FC<HomeProps> = ({ }) => {
 
   return (
     <>
-      <div className="app-page d-flex flex-column mt-3 py-3 px-2 gap-4">
-        <div className="top-section d-flex flex-row justify-content-start gap-4">
-          <div className="calendar-section p-2 ">
+      <div className="app-page d-flex flex-column mt-3 gap-2">
+        <div className="top-section d-flex flex-row justify-content-start">
+          <div className="calendar-section p-3">
             <Month visibleYear={calendarState.visibleYear} state={monthComponentState} />
           </div>
-          <div className="current-day-section p-2">
-            <Day isoDate={isoDate} state={dayComponentState} onSave={handleSaveAndRefetchCalendar} />
+          <div className="current-day-section p-3">
+            <Day isoDate={isoDate} state={dayComponentState} moods={moods} onSave={handleSaveAndRefetchCalendar} />
           </div>
         </div>
-        <div className="bottom-section d-flex flex-row align-items-center justify-content-start">
-          <div className="analytics-section w-100 p-2">
-            <Analytics />
+        <div className="bottom-section background-primary color-background d-flex flex-row align-items-center justify-content-start">
+          <div className="analytics-section w-100 p-3">
+            <Year days={monthComponentState.days} moods={moods} />
           </div>
         </div>
       </div>

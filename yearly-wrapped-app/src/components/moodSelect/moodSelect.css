@@ -1,6 +1,14 @@
+.mood-select-container {
+  min-height: 100px;
+}
+
 .mood-option {
-  cursor: pointer;
   border-radius: 1rem;
+  cursor: default;
+}
+
+.mood-option.editable {
+  cursor: pointer;
 }
 
 .mood-option.selected {
@@ -8,16 +16,33 @@
   outline: 2px solid var(--primary-dark);
 }
 
-.mood-option:hover {
+.mood-option.editable:hover {
   background-color: var(--tertiary-dark);
 }
 
 .mood-option-button {
-  width: 48px;
-  height: 48px;
   border: none;
   border-radius: 50%;
-  box-shadow: 0 3px 5px var(--outline-dark);
+  box-shadow: 0 3px 5px var(--primary-dark);
+}
+
+.mood-option.editable .mood-option-button {
+  width: 48px;
+  height: 48px;
+}
+
+.mood-option.mood-option.not-editable.selected {
+  outline: 1px solid var(--primary-dark);
+}
+
+.mood-option.not-editable.selected .mood-option-button {
+  width: 54px;
+  height: 54px;
+}
+
+.mood-option.not-editable.unselected .mood-option-button {
+  width: 28px;
+  height: 28px;
 }
 
 .mood-option-label {

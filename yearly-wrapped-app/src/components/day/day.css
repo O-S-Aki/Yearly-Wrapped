@@ -1,5 +1,6 @@
 .day-container {
   max-width: 720px;
+  min-width: 480px;
   position: relative;
 }
 

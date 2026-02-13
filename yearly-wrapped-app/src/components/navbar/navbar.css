@@ -1,4 +1,5 @@
 .navbar {
+  background-color: var(--background-dark);
   box-shadow: 0 3px 5px var(--outline-dark);
   position: fixed;
   width: 100%;

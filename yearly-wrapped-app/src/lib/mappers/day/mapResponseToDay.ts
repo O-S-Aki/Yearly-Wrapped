@@ -7,7 +7,7 @@ export const mapResponseToDay = (data: any): IDay => {
     userId: data.UserId,
     date: new Date(data.Date),
     isoDate: data.Date,
-    note: data.Note,
+    note: data.Note ? data.Note : null,
     mood: mapResponseToMood(data.Mood),
     song: mapResponseToSong(data.Song),
   }

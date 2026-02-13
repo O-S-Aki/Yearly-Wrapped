@@ -16,3 +16,7 @@
 .mood-card-percentage {
   font-weight: 800;
 }
+
+.mood-card-count {
+  font-size: smaller;
+}

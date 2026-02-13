@@ -20,7 +20,7 @@ const Year: React.FC<YearProps> = ({ days, moods }) => {
           <h2 className='year-title m-0'>Year so Far</h2>
         </div>
         <p className="mt-3 mb-0">
-          A record of the ratings that you have given to each day over the course of the year so far.
+          A record of the ratings given to each day over the course of the year so far.
         </p>
         <div className="mood-card-container mt-3 d-flex flex-row align-items-center justify-content-start gap-4">
           {

@@ -18,6 +18,7 @@ const MoodCard: React.FC<MoodCardProps> = ({ mood, dayCount, totalDays }) => {
         <div className={`mood-card-icon background-${mood.label.toLowerCase()}`}></div>
         <div className="mood-card-content">
           <h5 className="mood-card-percentage text-center m-0">{percentage.toFixed(0)}%</h5>
+          <p className="mood-card-count text-center m-0">{dayCount} of {totalDays} days</p>
         </div>
       </div>
     </>

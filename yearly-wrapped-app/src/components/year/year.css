@@ -1,0 +1,8 @@
+.year-title {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.year-title-container {
+  border-bottom: 1px solid var(--background-dark);
+}

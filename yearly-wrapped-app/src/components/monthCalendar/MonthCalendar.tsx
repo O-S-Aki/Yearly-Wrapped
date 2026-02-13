@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { DayCell } from '../';
-import { getMonthName, getWeekdays } from '../../lib/calendar/calendarUtil';
+import { getMonthName, getWeekdays } from '../../lib/calendar/util';
 
 import type { ICalendarDay } from '../../lib/interfaces';
 

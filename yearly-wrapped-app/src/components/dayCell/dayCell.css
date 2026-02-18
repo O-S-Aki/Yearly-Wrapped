@@ -24,3 +24,13 @@
 .date.color-secondary {
   opacity: 0.7;
 }
+
+@media (width < 768px) {
+  .mood-indicator {
+    font-size: 0.6rem;
+  }
+
+  .mood-indicator i::before {
+    box-shadow: 0 2px 5px var(--outline-dark);
+  }
+}

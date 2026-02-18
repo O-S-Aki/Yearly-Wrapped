@@ -5,6 +5,7 @@
 .main {
   width: 100%;
   align-self: center;
+  overflow: hidden;
 }
 
 .prevent-select {

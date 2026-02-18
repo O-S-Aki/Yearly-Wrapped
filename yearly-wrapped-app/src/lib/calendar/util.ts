@@ -41,10 +41,13 @@ export function datesAreEqual(day1: Date, day2: Date): boolean {
 }
 
 export function getMonthName(month: number, shortened?: boolean): string {
-  const date: Date = new Date(`01-01`);
-  date.setMonth(month - 1);
-  
-  return date.toLocaleString('default', { month: `${shortened ? 'short' : 'long'}` });
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  if (shortened) {
+    return months[month - 1].slice(0, 3);
+  }
+
+  return months[month - 1];
 }
 
 export function getWeekdays(shortened?: boolean): string[] {

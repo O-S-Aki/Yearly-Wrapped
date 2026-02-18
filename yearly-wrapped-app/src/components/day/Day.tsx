@@ -18,10 +18,10 @@ const Day: React.FC<DayProps> = ({ isoDate, state, moods, onSave }) => {
   
   return (
     <>
-      <div className="app-component day-container">
+      <div className="app-component day-container w-100">
         <div className="pt-3 ps-1 d-flex flex-column align-items-start">
           <div className="day-title-container pb-3 w-100 d-flex flex-row align-items-center gap-3">
-            <h2 className='m-0 day-full-date'>{formatDate(isoDate)}</h2>
+            <h3 className='m-0 day-full-date'>{formatDate(isoDate)}</h3>
             <div className="edit-day-button-container">
               <button className="btn edit-day-button background-tertiary color-primary" onClick={() => state.openModal()}>
                 <i className="bi bi-pencil-fill"></i>

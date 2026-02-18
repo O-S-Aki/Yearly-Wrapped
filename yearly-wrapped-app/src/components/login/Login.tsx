@@ -34,31 +34,28 @@ const Login: React.FC<PageProps> = ({ }) => {
 
   return (
     <>
-      <form onSubmit={handleLogin}>
-        <h2>Login</h2>
+      <div className="app-page login-page background-background color-primary d-flex flex-column mt-3 px-3 py-3">
+        <div className="day-title-container mb-3">
+          <h2 className='mb-0 login-title'>Login</h2>
+        </div>
+        <form onSubmit={handleLogin} className='login-form'>
+          <div className="form-group mb-3">
+            <p className="mb-1">Email</p>
+            <input className='form-control' type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </div>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+          <div className="form-group">
+            <p className="mb-1">Password</p>
+            <input className='form-control' type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          </div>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+          <div className="outline-div w-100 mt-4 mb-4"></div>
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
-        </button>
+          <button type="submit" className='btn' disabled={loading}>Login</button>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
-      </form>
+          {error && <p className='error-indicator mt-3'>{error}</p>}
+        </form>
+      </div>
     </>
   )
 }

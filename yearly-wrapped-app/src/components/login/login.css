@@ -1,0 +1,22 @@
+.login-page {
+  max-width: 500px;
+}
+
+.login-title {
+  font-weight: 600;
+}
+
+.outline-div {
+  border-bottom: 1px solid var(--outline-dark);
+}
+
+.error-indicator {
+  color: var(--accent-dark);
+}
+
+.login-form button,
+.login-form button:hover {
+  background-color: var(--tertiary-dark);
+  color: var(--primary-dark);
+  border: 1px solid var(--primary-dark);
+}

@@ -10,7 +10,7 @@
 
 .mood-indicator {
   position: absolute;
-  font-size: smaller;
+  font-size: 0.75rem;
   top: 7%;
   right: 12%;
 }

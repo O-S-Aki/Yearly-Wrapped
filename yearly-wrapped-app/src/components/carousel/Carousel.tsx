@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { useState, useEffect } from 'react';
+import { useIsMobile } from '../../hooks';
 
 import useEmblaCarousel from 'embla-carousel-react';
 import type { EmblaCarouselType } from 'embla-carousel';
@@ -13,6 +15,8 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({children, onIndexChange, initialIndex }) => {
+  const isMobile = useIsMobile();
+
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, watchDrag: true });
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
   const [selectedSnap, setSelectedSnap] = useState(initialIndex)
@@ -79,29 +83,46 @@ const Carousel: React.FC<CarouselProps> = ({children, onIndexChange, initialInde
           </div>
         </div>  
 
-        <div className="navigation-controls d-flex flex-row justify-content-between align-items-center px-2">
-          <div className="navigation-buttons d-flex flex-row gap-3">
-            <button className="btn embla__prev background-background color-primary" onClick={navigateToPrevious}>
-              <i className="bi bi-chevron-left "></i>
-            </button>
-            <button className="btn embla__next background-background color-primary" onClick={navigateToNext}>
-              <i className="bi bi-chevron-right"></i>
-            </button>
-          </div>
-          <div className="line prevent-select">.</div>
-          <div className="navigation-dots d-flex flex-row align-items-center justify-content-end">
-            <div className="embla__dots">
-              <div className="button-dots-container d-flex flex-row gap-2">
-                {
-                  scrollSnaps.map((_, index) => (
-                    <button className={`embla__dot ${index == selectedSnap ? 'embla__dot--selected' : ''} background-background`} key={index}
-                      onClick={() => navigateTo(index)}></button>
-                  ))
-                }
+        {
+          isMobile ? (
+          <>
+            <div className="navigation-controls d-flex flex-row justify-content-center align-items-center px-2">
+              <div className="navigation-buttons d-flex flex-row gap-3">
+                <button className="btn embla__prev background-background color-primary" onClick={navigateToPrevious}>
+                  <i className="bi bi-chevron-left "></i>
+                </button>
+                <button className="btn embla__next background-background color-primary" onClick={navigateToNext}>
+                  <i className="bi bi-chevron-right"></i>
+                </button>
               </div>
             </div>
-          </div>
-        </div>
+          </>) : (
+          <>
+            <div className="navigation-controls d-flex flex-row justify-content-between align-items-center px-2">
+              <div className="navigation-buttons d-flex flex-row gap-3">
+                <button className="btn embla__prev background-background color-primary" onClick={navigateToPrevious}>
+                  <i className="bi bi-chevron-left "></i>
+                </button>
+                <button className="btn embla__next background-background color-primary" onClick={navigateToNext}>
+                  <i className="bi bi-chevron-right"></i>
+                </button>
+              </div>
+              <div className="line prevent-select">.</div>
+              <div className="navigation-dots d-flex flex-row align-items-center justify-content-end">
+                <div className="embla__dots">
+                  <div className="button-dots-container d-flex flex-row gap-2">
+                    {
+                      scrollSnaps.map((_, index) => (
+                        <button className={`embla__dot ${index == selectedSnap ? 'embla__dot--selected' : ''} background-background`} key={index}
+                          onClick={() => navigateTo(index)}></button>
+                      ))
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>)
+        }
       </div>
     }
     </>

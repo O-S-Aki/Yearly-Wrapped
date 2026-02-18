@@ -2,6 +2,7 @@ import React from 'react';
 
 import { DayCell } from '../';
 import { getMonthName, getWeekdays } from '../../lib/calendar/util';
+import { useIsMobile } from '../../hooks';
 
 import type { ICalendarDay } from '../../lib/interfaces';
 
@@ -15,6 +16,8 @@ interface MonthCalendarProps {
 }
 
 const MonthCalendar: React.FC<MonthCalendarProps> = ({ year, month, weeks, onDaySelect }) => {
+  const isMobile: boolean = useIsMobile();
+  
   const monthName: string = getMonthName(month, false);
   const weekdays: string[] = getWeekdays(true);
 
@@ -45,7 +48,7 @@ const MonthCalendar: React.FC<MonthCalendarProps> = ({ year, month, weeks, onDay
                     <div className="week-row" key={weekIndex}>
                       {
                         week.map((day, index) => (
-                          <div className={`day-cell-container px-3 py-3 ${day.isToday && day.isCurrentMonth ? 'today' : ''} ${day.isSelected && day.isCurrentMonth ? 'selected' : ''} ${day.isCurrentMonth ? 'current-month' : 'other-month'}`} key={index} onClick={() => onDaySelect(day)}>
+                          <div className={`day-cell-container ${isMobile ? 'px-2 py-2' : 'px-3 py-3'} ${day.isToday && day.isCurrentMonth ? 'today' : ''} ${day.isSelected && day.isCurrentMonth ? 'selected' : ''} ${day.isCurrentMonth ? 'current-month' : 'other-month'}`} key={index} onClick={() => onDaySelect(day)}>
                             <DayCell day={day} />
                           </div>
                         ))

@@ -11,3 +11,6 @@ export { default as useDayRecordState } from './state/useDayRecordState';
 
 export { default as useDayComponentState } from './state/useDayComponentState';
 export { default as useMonthComponentState } from './state/useMonthComponentState';
+
+export { default as useIsMobile } from './util/useIsMobile';
+export { default as useClickOutside } from './util/useClickOutside';

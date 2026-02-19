@@ -26,7 +26,7 @@ const MonthCalendar: React.FC<MonthCalendarProps> = ({ year, month, weeks, onDay
       {
         weeks ? (
           <>
-            <div className="month-calendar background-tertiary mb-3 px-4 py-3 d-flex flex-column align-items-center">
+            <div className={`month-calendar background-tertiary mb-3 ${isMobile ? 'px-3 py-2' : 'px-4 py-3'} d-flex flex-column align-items-center`}>
               <div className="month-details-container py-3 d-flex flex-column align-items-center">
                 <h6 className="month-year color-primary m-0 prevent-select">{year}</h6>
                 <h2 className="month-full-name color-primary m-0 prevent-select">{monthName}</h2>

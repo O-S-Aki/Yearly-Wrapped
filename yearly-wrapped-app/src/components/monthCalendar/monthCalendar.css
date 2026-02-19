@@ -1,5 +1,5 @@
 .month-calendar {
-  border-radius: 3rem;
+  border-radius: 2.5rem;
   box-shadow: 0px 5px 5px var(--primary-dark);
   width: fit-content;
   cursor: default;
@@ -45,7 +45,12 @@
   border-top: 1px solid var(--outline-dark);
 }
 
+
 @media (width < 768px) {
+  .month-calendar {
+    border-radius: 2rem;
+  }
+
   .weekday-label {
     font-size: 15px;
   }

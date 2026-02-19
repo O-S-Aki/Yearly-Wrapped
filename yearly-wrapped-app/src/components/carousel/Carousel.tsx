@@ -70,7 +70,7 @@ const Carousel: React.FC<CarouselProps> = ({children, onIndexChange, initialInde
     {
       <div className="carousel">
         <div className='embla'>
-          <div className='embla__viewport mb-3' ref={emblaRef}>
+          <div className='embla__viewport mb-2' ref={emblaRef}>
             <div className='embla__container'>
               {
                 React.Children.map(children, (child, index) => (
@@ -86,6 +86,7 @@ const Carousel: React.FC<CarouselProps> = ({children, onIndexChange, initialInde
         {
           isMobile ? (
           <>
+          {/*
             <div className="navigation-controls d-flex flex-row justify-content-center align-items-center px-2">
               <div className="navigation-buttons d-flex flex-row gap-3">
                 <div className="btn embla__prev background-background color-primary" onClick={navigateToPrevious}>
@@ -96,6 +97,7 @@ const Carousel: React.FC<CarouselProps> = ({children, onIndexChange, initialInde
                 </div>
               </div>
             </div>
+          */}
           </>) : (
           <>
             <div className="navigation-controls d-flex flex-row justify-content-between align-items-center px-2">

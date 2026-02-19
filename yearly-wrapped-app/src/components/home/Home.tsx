@@ -37,7 +37,7 @@ const Home: React.FC<HomeProps> = ({ }) => {
           isMobile ? (
             <>
               <div className="calendar-section color-primary background-background p-3">
-                <Month visibleYear={calendarState.visibleYear} state={monthComponentState} />
+                <Month visibleYear={calendarState.visibleYear} state={monthComponentState} selectedDate={isoDate} />
               </div>
               <div className="analytics-section background-primary color-background p-3">
                 <Year days={monthComponentState.days} moods={moods} />

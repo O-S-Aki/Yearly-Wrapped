@@ -16,7 +16,7 @@ const DayCell: React.FC<DayCellProps> = ({ day }) => {
         day ? (
           <>
             <div className={`day-cell py-1`}>
-              <h6 className={`date text-center m-0 prevent-select ${day.isCurrentMonth ? 'color-primary' : 'color-secondary'}`}>{day.dayNumber}</h6>
+              <h6 className={`date text-center m-0 prevent-select ${day.isCurrentMonth ? '' : 'color-secondary'}`}>{day.dayNumber}</h6>
             </div>
             {
               day.entry?.mood ? (

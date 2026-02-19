@@ -4,5 +4,5 @@ export default interface ICalendarState {
   visibleYear: number;
   visibleMonth: number;
   changeMonth: (year: number, month: number) => void;
-  selectDay: (day: Date) => void;
+  selectDate: (date: string) => void;
 }

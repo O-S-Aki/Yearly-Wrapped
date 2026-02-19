@@ -18,44 +18,26 @@
   padding-left: var(--slide-spacing);
 }
 
-.line {
-  height: 100%;
-  border-right: 1px solid var(--outline-dark);
-  color: var(--background-dark);
-}
-
-.navigation-buttons button,
-.navigation-dots button {
-  border-radius: 50%;
-  box-shadow: 0 2px 5px var(--primary-dark);
-  border: none;
-}
-
-.navigation-buttons button:hover,
-.navigation-dots button:hover {
-  background-color: var(--background-dark);
-  box-shadow: 0 2px 5px var(--primary-dark);
-  color: var(--primary-dark);
-  filter: brightness(var(--hover-brightness));
-  border: none
-}
-
-.navigation-buttons button:active,
-.navigation-dots button:active {
-  border: none;
-  box-shadow: 0 2px 5px var(--primary-dark);
-}
-
 .embla__dot {
   width: 18px;
   height: 18px;
   border-radius: 50%;
+  box-shadow: 0 2px 5px var(--primary-dark);
+  cursor: pointer;
 }
 
 .embla__dot--selected {
   background-color: var(--primary-dark);
 }
 
-.navigation-dots button.embla__dot--selected:hover {
-  background-color: var(--primary-dark);
+.embla__next,
+.embla__prev {
+  cursor: pointer;
+  box-shadow: 0 2px 5px var(--primary-dark);
+}
+
+.line {
+  height: 100%;
+  border-right: 1px solid var(--outline-dark);
+  color: var(--background-dark);
 }

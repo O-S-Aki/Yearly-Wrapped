@@ -13,7 +13,7 @@ export default function useMonthComponentState(calendarState: ICalendarState): I
 
   const selectDay = (day: ICalendarDay) => {
     if (day.isCurrentMonth) {
-      calendarState.selectDay(day.date);
+      calendarState.selectDate(day.isoDate);
     }
   }
 

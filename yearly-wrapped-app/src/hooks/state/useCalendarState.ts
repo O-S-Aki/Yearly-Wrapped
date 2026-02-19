@@ -12,18 +12,20 @@ export default function useCalendarState(): ICalendarState {
   const [visibleMonth, setVisibleMonth] = useState<number>(currentDay.getMonth() + 1);
 
   const changeMonth = (year: number, month: number) => {
+    
     const date: Date = new Date(year, month - 1, 1);
     setSelectedDate(date);
     setSelectedIsoDate(convertToISODate(date));
+    
 
     setVisibleYear(year);
     setVisibleMonth(month);
   }
 
-  const selectDay = (date: Date) => {
-    setSelectedDate(date);
-    setSelectedIsoDate(convertToISODate(date));
+  const selectDate = (date: string) => {
+    setSelectedDate(new Date(date));
+    setSelectedIsoDate(date);
   }
 
-  return { selectedDate, selectedIsoDate, visibleYear, visibleMonth, changeMonth, selectDay }
+  return { selectedDate, selectedIsoDate, visibleYear, visibleMonth, changeMonth, selectDate }
 }

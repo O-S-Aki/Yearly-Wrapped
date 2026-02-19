@@ -29,7 +29,7 @@ const Day: React.FC<DayDetailsProps> = ({ day, moods }) => {
           <h6 className="mb-2 detail-section-title color-primary">Song of the Day</h6>
           <div className="d-flex flex-row align-items-center gap-3">
             {
-              day?.song ? (
+              day?.song?.url ? (
                 <>
                   <Link to={day.song.url} target="_blank">
                     <div className="song-image-container background-tertiary d-flex align-items-center justify-content-center">

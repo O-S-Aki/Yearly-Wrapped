@@ -34,6 +34,7 @@
 .navigation-buttons button:hover,
 .navigation-dots button:hover {
   background-color: var(--background-dark);
+  box-shadow: 0 2px 5px var(--primary-dark);
   color: var(--primary-dark);
   filter: brightness(var(--hover-brightness));
   border: none
@@ -42,6 +43,7 @@
 .navigation-buttons button:active,
 .navigation-dots button:active {
   border: none;
+  box-shadow: 0 2px 5px var(--primary-dark);
 }
 
 .embla__dot {

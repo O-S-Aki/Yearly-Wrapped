@@ -18,7 +18,7 @@ const Year: React.FC<YearProps> = ({ days, moods }) => {
     <>
       <div className={`app-component d-flex py-2 flex-column ${isMobile ? 'text-center' : ''}`}>
         <div className="year-title-container pb-3">
-          <h2 className='year-title m-0'>Year so Far</h2>
+          <h2 className='year-title m-0'>Year Summary</h2>
         </div>
         <p className="mt-3 mb-0">
           A record of the ratings given to each day over the course of the year so far.
@@ -26,7 +26,7 @@ const Year: React.FC<YearProps> = ({ days, moods }) => {
         {
           isMobile ? (
           <>
-            <div className="mood-card-container mt-3 d-flex flex-wrap justify-content-center gap-3">
+            <div className="mood-card-container mt-3 d-flex flex-wrap justify-content-center gap-2">
             {
               moods.map(mood => (
                 <MoodCard key={mood.label} mood={mood} dayCount={getDayCountByMood(days, mood)} totalDays={days.length} />

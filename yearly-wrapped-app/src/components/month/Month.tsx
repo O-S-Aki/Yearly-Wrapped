@@ -23,7 +23,7 @@ const Month: React.FC<MonthProps> = ({ visibleYear, state, selectedDate }) => {
         {
           state.yearCalendar ? (
             <>
-              <div className="calendar-container">
+              <div className={`calendar-container ${isMobile ? 'background-tertiary' : 'background-background'} py-2`}>
                 <Carousel initialIndex={state.activeMonthIndex} onIndexChange={(index) => state.changeMonth(index)}>
                   {
                     state.yearCalendar.map(( { month, weeks }) => (
@@ -35,9 +35,9 @@ const Month: React.FC<MonthProps> = ({ visibleYear, state, selectedDate }) => {
               {
                 isMobile && selectedDate ? (
                 <>
-                  <div className='p-2 w-100 '>
+                  <div className='mt-1 p-2 w-100 '>
                     <div className="date-link-container">
-                      <h5 className="mb-1 day-full-date text-center">{formatDate(selectedDate)}</h5>
+                      <h5 className="mb-1 text-center">{formatDate(selectedDate)}</h5>
                     </div>
                     <div className="d-flex flex-row justify-content-center align-items-center gap-2 mt-2">
                       <div className="btn date-control-button background-tertiary"><i className="bi bi-eye-fill"></i></div>
@@ -46,7 +46,7 @@ const Month: React.FC<MonthProps> = ({ visibleYear, state, selectedDate }) => {
                   </div>
                   
                   <p className="mt-2 mb-0 text-center">
-                    Swipe, or use the arrows to navigate between months. Click on any day on the calendar to view or record a summary for it.
+                    Swipe on the calendar to navigate between months. Click on any day to view or record a summary for it.
                   </p>
                 </>) : (<></>)
               }

@@ -32,7 +32,7 @@ const Home: React.FC<HomeProps> = ({ }) => {
 
   return (
     <>
-      <div className="app-page d-flex flex-column mt-3 gap-2">
+      <div className="app-page d-flex flex-column gap-2">
         {
           isMobile ? (
             <>

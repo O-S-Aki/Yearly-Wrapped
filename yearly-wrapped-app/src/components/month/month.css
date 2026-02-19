@@ -3,6 +3,10 @@
   border-bottom: 1px solid var(--outline-dark);
 }
 
+.date-link-container h5 {
+  font-weight: 600;
+}
+
 .date-control-button {
   cursor: pointer;
   box-shadow: 0 2px 5px var(--primary-dark);

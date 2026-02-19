@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import { Month, Day, Year } from '../';
 import { useAuth, useCalendarState, useDayComponentState, useIsMobile, useMonthComponentState, useMoods } from '../../hooks';
 
@@ -15,6 +17,8 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ }) => {
   const { user } = useAuth();
   const { moods } = useMoods();
+
+  const navigate = useNavigate();
 
   const calendarState = useCalendarState();
   const isMobile = useIsMobile();
@@ -58,8 +62,8 @@ const Home: React.FC<HomeProps> = ({ }) => {
                       <h6 className="mb-1 text-center">{formatDate(isoDate)}</h6>
                     </div>
                     <div className="d-flex flex-row justify-content-center align-items-center gap-2 mt-2">
-                      <div className="btn date-control-button background-tertiary"><i className="bi bi-eye-fill"></i></div>
-                      <div className="btn date-control-button background-tertiary"><i className="bi bi-pencil-fill"></i></div>
+                      <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/day/${isoDate}`)}><i className="bi bi-eye-fill"></i></div>
+                      <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/day/${isoDate}`)}><i className="bi bi-pencil-fill"></i></div>
                     </div>
                   </div>
                   <div className="btn" onClick={goNextDay}><i className="bi bi-chevron-right"></i></div>

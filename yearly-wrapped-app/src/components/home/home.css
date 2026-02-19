@@ -2,3 +2,29 @@
   max-width: 720px;
   flex: 1;
 }
+
+.middle-section-home .date-control-buttons-container {
+  flex: 1;
+}
+
+.middle-section-home .btn {
+  cursor: pointer;
+  border: none;
+}
+
+.btn:active {
+  border: none;
+}
+
+.date-link-container {
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--outline-dark);
+}
+
+.date-link-container h6 {
+  font-weight: 600;
+}
+
+.date-control-button {
+  box-shadow: 0 2px 5px var(--primary-dark);
+}

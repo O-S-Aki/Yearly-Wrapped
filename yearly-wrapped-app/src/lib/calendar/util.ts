@@ -40,6 +40,28 @@ export function datesAreEqual(day1: Date, day2: Date): boolean {
   return equal;
 }
 
+export function getNextDayInYear(isoDate: string): string {
+  const date: Date = new Date(isoDate);
+  date.setDate(date.getDate() + 1);
+
+  if (date.getMonth() == 0 && date.getDate() == 1) {
+    date.setFullYear(date.getFullYear() - 1);
+  }
+
+  return convertToISODate(date);
+}
+
+export function getPreviousDayInYear(isoDate: string): string {
+  const date: Date = new Date(isoDate);
+  date.setDate(date.getDate() - 1);
+
+  if (date.getMonth() == 11 && date.getDate() == 31) {
+    date.setFullYear(date.getFullYear() + 1);
+  }
+
+  return convertToISODate(date);
+}
+
 export function getMonthName(month: number, shortened?: boolean): string {
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 

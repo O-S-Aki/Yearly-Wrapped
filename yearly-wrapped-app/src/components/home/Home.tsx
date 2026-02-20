@@ -50,7 +50,7 @@ const Home: React.FC<HomeProps> = ({ }) => {
         {
           isMobile ? (
             <>
-              <div className="calendar-section color-primary background-background p-3">
+              <div className="calendar-section color-primary background-tertiary pt-2 pb-1 mb-2">
                 <Month visibleYear={calendarState.visibleYear} state={monthComponentState} />
               </div>
               
@@ -63,7 +63,7 @@ const Home: React.FC<HomeProps> = ({ }) => {
                     </div>
                     <div className="d-flex flex-row justify-content-center align-items-center gap-2 mt-2">
                       <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/day/${isoDate}`)}><i className="bi bi-eye-fill"></i></div>
-                      <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/day/${isoDate}`)}><i className="bi bi-pencil-fill"></i></div>
+                      <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/day/${isoDate}/edit`)}><i className="bi bi-pencil-fill"></i></div>
                     </div>
                   </div>
                   <div className="btn" onClick={goNextDay}><i className="bi bi-chevron-right"></i></div>

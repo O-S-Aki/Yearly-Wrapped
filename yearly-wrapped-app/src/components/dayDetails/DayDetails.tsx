@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import MoodSelect from '../moodSelect/MoodSelect';
+import { useIsMobile } from '../../hooks';
+
 import type { IDay, IMood } from '../../lib/interfaces';
 
 import './dayDetails.css';
-import MoodSelect from '../moodSelect/MoodSelect';
 
 interface DayDetailsProps {
   day: IDay | null;
@@ -12,15 +14,16 @@ interface DayDetailsProps {
 }
 
 const Day: React.FC<DayDetailsProps> = ({ day, moods }) => {
+  const isMobile: boolean = useIsMobile();
 
   return (
     <>
       <div className="app-component day-details d-flex flex-column w-100">
-        <div className="day-section-container py-3">
+        <div className={`day-section-container ${isMobile ? 'd-flex flex-row justify-content-center py-1' : 'py-2'}`}>
           <MoodSelect moods={moods} selectedMood={day?.mood ?? null} editable={false} />
         </div>
 
-        <div className="day-section-container mt-2 py-2">
+        <div className={`day-section-container mt-2 py-2`}>
           <h6 className="mb-2 detail-section-title color-primary">Summary</h6>
           <p className="m">{day?.note ?? 'No summary has been recorded for this day.'}</p>
         </div>

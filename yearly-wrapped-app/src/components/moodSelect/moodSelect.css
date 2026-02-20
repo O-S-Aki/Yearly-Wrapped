@@ -32,17 +32,18 @@
 }
 
 .mood-option.mood-option.not-editable.selected {
-  outline: 1px solid var(--primary-dark);
+  outline: none;
+  background-color: var(--background-dark);
+}
+
+.mood-option.not-editable .mood-option-button {
+  width: 20px;
+  height: 20px;
 }
 
 .mood-option.not-editable.selected .mood-option-button {
-  width: 54px;
-  height: 54px;
-}
-
-.mood-option.not-editable.unselected .mood-option-button {
-  width: 28px;
-  height: 28px;
+  width: 60px;
+  height: 60px;
 }
 
 .mood-option-label {

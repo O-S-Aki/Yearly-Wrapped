@@ -30,7 +30,8 @@ function App() {
                 <Route path='/home' element={<Home />} />
 
                 <Route path='/day'>
-                  <Route path=':isoDate' element={<DayMobile />} />
+                  <Route path=':date' element={<DayMobile editMode={false} />} />
+                  <Route path=':date/edit' element={<DayMobile editMode={true} />} />
                 </Route>
               </Routes>
             </>) : (

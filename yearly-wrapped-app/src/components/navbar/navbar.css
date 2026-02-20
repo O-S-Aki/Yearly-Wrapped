@@ -12,3 +12,8 @@
   text-transform: uppercase;
   font-weight: bold;
 }
+
+.navbar-link {
+  text-transform: uppercase;
+  font-size: smaller;
+}

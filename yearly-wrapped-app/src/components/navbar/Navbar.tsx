@@ -25,12 +25,7 @@ const Navbar: React.FC<NavbarProps> = ({ user, logout }) => {
           isMobile ? (
           <>
             <div className="profile-details-container d-flex flex-row align-items-center justify-content-start">
-            {
-              user ? (
-                <>
-                  <UserModal user={user} logout={logout} />
-                </>) : (<></>)
-            }
+              <UserModal user={user} logout={logout} />
             </div>
             <h6 className="m-0 color-primary navbar-title" onClick={() => navigate('/home')}>Daily Tracker</h6>
             <p className="m-0 color-primary navbar-link" onClick={() => navigate('/home')}>Home</p>
@@ -41,12 +36,7 @@ const Navbar: React.FC<NavbarProps> = ({ user, logout }) => {
               <h6 className="m-0 ms-2 color-primary navbar-title">Daily Tracker</h6>
             </div>
             <div className="profile-details-container d-flex flex-row align-items-center justify-content-end">
-            {
-              user ? (
-                <>
-                  <UserModal user={user} logout={logout} />
-                </>) : (<></>)
-            }
+              <UserModal user={user} logout={logout} />
             </div>
           </>)
         }

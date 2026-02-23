@@ -7,6 +7,7 @@ export default function useDayRecordState(initialDay: IDay | null, date: string)
   const [songArtist, setSongArtist] = useState<string>(initialDay?.song?.artist || '');
   const [songUrl, setSongUrl] = useState<string>(initialDay?.song?.url || '');
   const [note, setNote] = useState<string>(initialDay?.note || '');
+  const [showSongSection, setShowSongSection] = useState<boolean>(initialDay?.song?.name ? true : false );
 
   useEffect(() => {
     setSongName(initialDay?.song?.name || '');
@@ -31,5 +32,15 @@ export default function useDayRecordState(initialDay: IDay | null, date: string)
     setNote(note);
   }
 
-  return { songName, songArtist, songUrl, note, changeSongName, changeSongArtist, changeSongUrl, changeNote };
+  const toggleSongSection = () => {
+    if (showSongSection) {
+      setSongName('');
+      setSongArtist('');
+      setSongUrl('');
+    }
+    
+    setShowSongSection(!showSongSection);
+  }
+
+  return { songName, songArtist, songUrl, note, changeSongName, changeSongArtist, changeSongUrl, changeNote, showSongSection, toggleSongSection };
 }

@@ -26,10 +26,10 @@ const MonthCalendar: React.FC<MonthCalendarProps> = ({ year, month, weeks, onDay
       {
         weeks ? (
           <>
-            <div className="month-calendar background-tertiary mb-3 px-4 py-3 d-flex flex-column align-items-center">
+            <div className={`month-calendar mb-2 ${isMobile ? 'px-3 py-2 background-background color-primary' : 'px-4 py-3 background-tertiary color-primary'} d-flex flex-column align-items-center`}>
               <div className="month-details-container py-3 d-flex flex-column align-items-center">
-                <h6 className="month-year color-primary m-0 prevent-select">{year}</h6>
-                <h2 className="month-full-name color-primary m-0 prevent-select">{monthName}</h2>
+                <h6 className="month-year m-0 prevent-select">{year}</h6>
+                <h2 className="month-full-name m-0 prevent-select">{monthName}</h2>
               </div>
 
               <div className="day-grid">
@@ -37,7 +37,7 @@ const MonthCalendar: React.FC<MonthCalendarProps> = ({ year, month, weeks, onDay
                   {
                     weekdays.map((weekday, index) => (
                       <div className="weekday-cell py-3" key={index}>
-                        <p className="text-center weekday-label color-primary m-0 prevent-select">{weekday}</p>
+                        <p className="text-center weekday-label m-0 prevent-select">{weekday}</p>
                       </div>
                     ))
                   }

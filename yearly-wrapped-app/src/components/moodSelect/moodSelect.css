@@ -11,38 +11,25 @@
   cursor: pointer;
 }
 
-.mood-option.selected {
-  background-color: var(--tertiary-dark);
-  outline: 2px solid var(--primary-dark);
-}
-
-.mood-option.editable:hover {
-  background-color: var(--tertiary-dark);
-}
-
 .mood-option-button {
   border: none;
   border-radius: 50%;
   box-shadow: 0 3px 5px var(--primary-dark);
 }
 
-.mood-option.editable .mood-option-button {
-  width: 48px;
-  height: 48px;
-}
-
 .mood-option.mood-option.not-editable.selected {
-  outline: 1px solid var(--primary-dark);
+  outline: none;
+  background-color: var(--background-dark);
 }
 
-.mood-option.not-editable.selected .mood-option-button {
-  width: 54px;
-  height: 54px;
+.mood-option .mood-option-button {
+  width: 20px;
+  height: 20px;
 }
 
-.mood-option.not-editable.unselected .mood-option-button {
-  width: 28px;
-  height: 28px;
+.mood-option.selected .mood-option-button {
+  width: 60px;
+  height: 60px;
 }
 
 .mood-option-label {

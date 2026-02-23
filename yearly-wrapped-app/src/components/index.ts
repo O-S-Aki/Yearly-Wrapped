@@ -18,3 +18,6 @@ export { default as Analytics } from './year/Year';
 export { default as RecordDayModal } from './recordDayModal/RecordDayModal';
 export { default as MoodSelect } from './moodSelect/MoodSelect';  
 export { default as MoodCard } from './moodCard/MoodCard';
+
+export { default as DayMobile } from './dayMobile/DayMobile';
+export { default as RecordDayMobile } from './recordDayMobile/RecordDayMobile';

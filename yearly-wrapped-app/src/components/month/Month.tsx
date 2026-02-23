@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Carousel } from '../';
-import { MonthCalendar } from '../';
+import { Carousel, MonthCalendar } from '../';
 import { useIsMobile } from '../../hooks';
 
 import type { IMonthComponentState } from '../../lib/interfaces';
@@ -22,7 +21,7 @@ const Month: React.FC<MonthProps> = ({ visibleYear, state }) => {
         {
           state.yearCalendar ? (
             <>
-              <div className="calendar-container">
+              <div className={`calendar-container ${isMobile ? 'background-tertiary' : 'background-background'} py-2`}>
                 <Carousel initialIndex={state.activeMonthIndex} onIndexChange={(index) => state.changeMonth(index)}>
                   {
                     state.yearCalendar.map(( { month, weeks }) => (
@@ -31,14 +30,6 @@ const Month: React.FC<MonthProps> = ({ visibleYear, state }) => {
                   }
                 </Carousel>
               </div>
-              {
-                isMobile ? (
-                <>
-                  <p className="mt-3 mb-0 text-center">
-                    Swipe, or use the arrows to navigate between months. Click on any day on the calendar to view or record a summary for it.
-                  </p>
-                </>) : (<></>)
-              }
             </>) : (<></>)
         }
       </div>

@@ -70,7 +70,7 @@ const Carousel: React.FC<CarouselProps> = ({children, onIndexChange, initialInde
     {
       <div className="carousel">
         <div className='embla'>
-          <div className='embla__viewport mb-3' ref={emblaRef}>
+          <div className='embla__viewport' ref={emblaRef}>
             <div className='embla__container'>
               {
                 React.Children.map(children, (child, index) => (
@@ -86,26 +86,28 @@ const Carousel: React.FC<CarouselProps> = ({children, onIndexChange, initialInde
         {
           isMobile ? (
           <>
+          {/*
             <div className="navigation-controls d-flex flex-row justify-content-center align-items-center px-2">
               <div className="navigation-buttons d-flex flex-row gap-3">
-                <button className="btn embla__prev background-background color-primary" onClick={navigateToPrevious}>
+                <div className="btn embla__prev background-background color-primary" onClick={navigateToPrevious}>
                   <i className="bi bi-chevron-left "></i>
-                </button>
-                <button className="btn embla__next background-background color-primary" onClick={navigateToNext}>
+                </div>
+                <div className="btn embla__next background-background color-primary" onClick={navigateToNext}>
                   <i className="bi bi-chevron-right"></i>
-                </button>
+                </div>
               </div>
             </div>
+          */}
           </>) : (
           <>
-            <div className="navigation-controls d-flex flex-row justify-content-between align-items-center px-2">
+            <div className="navigation-controls mt-3 d-flex flex-row justify-content-between align-items-center px-2">
               <div className="navigation-buttons d-flex flex-row gap-3">
-                <button className="btn embla__prev background-background color-primary" onClick={navigateToPrevious}>
+                <div className="btn embla__prev background-background color-primary" onClick={navigateToPrevious}>
                   <i className="bi bi-chevron-left "></i>
-                </button>
-                <button className="btn embla__next background-background color-primary" onClick={navigateToNext}>
+                </div>
+                <div className="btn embla__next background-background color-primary" onClick={navigateToNext}>
                   <i className="bi bi-chevron-right"></i>
-                </button>
+                </div>
               </div>
               <div className="line prevent-select">.</div>
               <div className="navigation-dots d-flex flex-row align-items-center justify-content-end">
@@ -113,8 +115,8 @@ const Carousel: React.FC<CarouselProps> = ({children, onIndexChange, initialInde
                   <div className="button-dots-container d-flex flex-row gap-2">
                     {
                       scrollSnaps.map((_, index) => (
-                        <button className={`embla__dot ${index == selectedSnap ? 'embla__dot--selected' : ''} background-background`} key={index}
-                          onClick={() => navigateTo(index)}></button>
+                        <div className={`embla__dot ${index == selectedSnap ? 'embla__dot--selected' : ''} background-background`} key={index}
+                          onClick={() => navigateTo(index)}></div>
                       ))
                     }
                   </div>

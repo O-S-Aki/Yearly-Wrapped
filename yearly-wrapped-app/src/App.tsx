@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
-import { Home, Login, Navbar } from "./components";
+import { DayMobile, Home, Login, Navbar } from "./components";
 
 import { useAuth } from "./hooks";
 
@@ -28,6 +28,11 @@ function App() {
               <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/home' element={<Home />} />
+
+                <Route path='/day'>
+                  <Route path=':date' element={<DayMobile editMode={false} />} />
+                  <Route path=':date/edit' element={<DayMobile editMode={true} />} />
+                </Route>
               </Routes>
             </>) : (
             <>

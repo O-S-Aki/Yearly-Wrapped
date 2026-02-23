@@ -26,7 +26,7 @@ const Day: React.FC<DayProps> = ({ isoDate, state, moods, onSave }) => {
               <button className="btn edit-day-button background-tertiary color-primary" onClick={() => state.openModal()}>
                 <i className="bi bi-pencil-fill"></i>
               </button>
-          </div>
+            </div>
           </div>
           <div className="day-details-container w-100">
             <DayDetails day={state.day} moods={moods} />

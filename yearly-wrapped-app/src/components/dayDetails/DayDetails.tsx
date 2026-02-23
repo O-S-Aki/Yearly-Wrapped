@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import MoodSelect from '../moodSelect/MoodSelect';
-import { useIsMobile } from '../../hooks';
 
 import type { IDay, IMood } from '../../lib/interfaces';
 
@@ -14,8 +13,6 @@ interface DayDetailsProps {
 }
 
 const Day: React.FC<DayDetailsProps> = ({ day, moods }) => {
-  const isMobile: boolean = useIsMobile();
-
   return (
     <>
       <div className="app-component day-details d-flex flex-column w-100">

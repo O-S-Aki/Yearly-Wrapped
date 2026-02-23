@@ -11,24 +11,10 @@
   cursor: pointer;
 }
 
-.mood-option.selected {
-  background-color: var(--tertiary-dark);
-  outline: 2px solid var(--primary-dark);
-}
-
-.mood-option.editable:hover {
-  background-color: var(--tertiary-dark);
-}
-
 .mood-option-button {
   border: none;
   border-radius: 50%;
   box-shadow: 0 3px 5px var(--primary-dark);
-}
-
-.mood-option.editable .mood-option-button {
-  width: 48px;
-  height: 48px;
 }
 
 .mood-option.mood-option.not-editable.selected {
@@ -36,12 +22,12 @@
   background-color: var(--background-dark);
 }
 
-.mood-option.not-editable .mood-option-button {
+.mood-option .mood-option-button {
   width: 20px;
   height: 20px;
 }
 
-.mood-option.not-editable.selected .mood-option-button {
+.mood-option.selected .mood-option-button {
   width: 60px;
   height: 60px;
 }

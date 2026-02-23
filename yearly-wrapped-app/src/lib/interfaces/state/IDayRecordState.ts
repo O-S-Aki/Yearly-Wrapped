@@ -7,4 +7,7 @@ export default interface IDayRecordState {
   changeSongArtist: (artist: string) => void;
   changeSongUrl: (url: string) => void;
   changeNote: (note: string) => void;
+
+  showSongSection?: boolean;
+  toggleSongSection?: () => void;
 }

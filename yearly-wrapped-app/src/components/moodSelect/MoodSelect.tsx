@@ -20,7 +20,6 @@ const MoodSelect: React.FC<MoodSelectProps> = ({ moods, selectedMood, editable, 
           moods.map((mood) => (
             <div key={mood.id} className={`mood-option editable p-2 d-flex flex-column align-items-center gap-2 ${selectedMood?.id == mood.id ? 'selected' : ''}`} onClick={() => onSelectMood(mood)}>
               <button className={`mood-option-button background-${mood.label.toLowerCase()}`}></button>
-              <h6 className="mood-option-label m-0">{mood.label}</h6>
             </div>
           ))
         ) : (

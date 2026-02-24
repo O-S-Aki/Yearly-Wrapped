@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { getDayCountByMood } from '../../lib/calendar/getDayCountByMood';
+import { useIsMobile } from '../../hooks';
+
 import type { IMood, ISimpleDay } from '../../lib/interfaces';
 
 import './year.css';
-import MoodCard from '../moodCard/MoodCard';
-import { useIsMobile } from '../../hooks';
 
 interface YearProps {
   days: ISimpleDay[];

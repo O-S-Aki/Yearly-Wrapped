@@ -70,8 +70,8 @@ const DayMobile: React.FC<DayMobileProps> = ({ editMode }) => {
               <div className="day-details-container w-100">
                 <DayDetails day={state.day} moods={moods} />
                 <div className="py-3 d-flex flex-row justify-content-center gap-2">
-                  <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/home`)}> <i className="bi bi-house-fill"></i> </div>
-                  <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/day/${isoDate}/edit`)}> <i className="bi bi-pencil-fill"></i> </div>
+                  <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/home`)}> <i className="bi bi-reply-fill"></i> Back </div>
+                  <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/day/${isoDate}/edit`)}> {state.day ? <><i className="bi bi-pencil-fill"></i> Edit</> : <><i className="bi bi-pencil-fill"></i> Record</>} </div>
                 </div>
               </div>
             </div>

@@ -6,3 +6,8 @@
 .year-title-container {
   border-bottom: 1px solid var(--background-dark);
 }
+
+.mood-graph-bar {
+  height: 20px;
+  box-shadow: 0px 2px 5px var(--outline-dark);
+}

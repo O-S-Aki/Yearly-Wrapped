@@ -87,11 +87,16 @@ const Home: React.FC<HomeProps> = ({ }) => {
                 <Day isoDate={isoDate} state={dayComponentState} moods={moods} onSave={handleSaveAndRefetchCalendar} />
               </div>
             </div>
-            <div className="bottom-section background-primary color-background d-flex flex-row align-items-center justify-content-start">
-              <div className="analytics-section w-100 p-3">
-                <Year days={monthComponentState.days} moods={moods} />
-              </div>
-            </div>
+            {
+              isMobile ? ( 
+              <>
+                <div className="bottom-section background-primary color-background d-flex flex-row align-items-center justify-content-start">
+                  <div className="analytics-section w-100 p-3">
+                    <Year days={monthComponentState.days} moods={moods} />
+                  </div>
+                </div>
+              </>) : (<></>)
+            }
             </>)
         }
       </div>

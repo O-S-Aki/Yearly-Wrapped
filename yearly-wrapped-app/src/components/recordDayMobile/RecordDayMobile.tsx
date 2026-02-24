@@ -81,10 +81,10 @@ const RecordDayMobile: React.FC<RecordDayMobileProps> = ({ state, moods, isoDate
 
       <div className="d-flex flex-row justify-content-center align-items-center gap-2 mt-2 py-3">
         <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/day/${isoDate}`)}>
-          <i className="bi bi-x-lg me-1"></i>
+          <i className="bi bi-x-lg me-1"></i> Cancel
         </div>
         <div className="btn date-control-button background-tertiary" onClick={() => onSave(recordState, state.selectedMood)}>
-          <i className="bi bi-floppy me-1"></i>
+          <i className="bi bi-floppy me-1"></i> Save
         </div>
       </div>
 

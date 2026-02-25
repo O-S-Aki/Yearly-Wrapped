@@ -21,3 +21,5 @@ export type { default as IMonthComponentState } from './state/IMonthComponentSta
 
 export type { default as IDayUpsertModel } from './upsertModel/IDayUpsertModel';
 export type { default as ISongUpsertModel } from './upsertModel/ISongUpsertModel';
+
+export type { default as IWeekday } from './viewModel/IWeekday';

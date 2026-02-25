@@ -7,7 +7,39 @@
   border-bottom: 1px solid var(--background-dark);
 }
 
+.mood-graph-bar-container {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .mood-graph-bar {
-  height: 20px;
+  height: 24px;
   box-shadow: 0px 2px 5px var(--outline-dark);
+}
+
+.weekday-graph-bar-container {
+  width: 40px;
+}
+
+.weekday-graph-bar {
+  width: 1px;
+}
+
+.weekday-graph-circle {
+  width: 24px;
+  height: 24px;
+  box-shadow: 2px 2px 5px var(--primary-dark);
+  border-radius: 50%;
+  background-color: var(--secondary-dark);
+}
+
+.highest .weekday-graph-circle {
+  background-color: var(--color-s);
+}
+
+.lowest .weekday-graph-circle {
+  background-color: var(--color-d);
+}
+
+.bar-circle-container {
+  border-bottom: 1px solid var(--primary-dark);
 }

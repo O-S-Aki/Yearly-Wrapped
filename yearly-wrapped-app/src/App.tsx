@@ -41,6 +41,10 @@ function App() {
             )
         }
       </div>
+
+      <footer className="mt-3 mx-4 py-2 text-center text-smaller">
+        <p className="m-0">This application was created by <span className="weight-700">Dami Akiode</span></p>
+      </footer>
     </div>
   );
 }

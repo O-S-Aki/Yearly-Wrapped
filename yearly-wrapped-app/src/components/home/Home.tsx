@@ -69,9 +69,11 @@ const Home: React.FC<HomeProps> = ({ }) => {
                   <div className="btn" onClick={goNextDay}><i className="bi bi-chevron-right"></i></div>
                 </div>
                 
-                <p className="mt-3 mb-0 text-center">
-                  Swipe on the calendar to navigate between months. Click on any day to view or record a summary for it.
-                </p>
+                <div className="px-3">
+                  <p className="mt-3 mb-0 text-center text-smaller">
+                    Swipe on the calendar to navigate between months. Click on any day to view or record a summary for it.
+                  </p>
+                </div>
               </div>
 
               <div className="analytics-section background-primary color-background p-3 mt-3">

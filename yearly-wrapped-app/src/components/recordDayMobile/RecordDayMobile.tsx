@@ -63,15 +63,15 @@ const RecordDayMobile: React.FC<RecordDayMobileProps> = ({ state, moods, isoDate
           <>
           <div className="d-flex flex-column gap-2">
             <div>
-              <p className="ms-1 mb-0">Name</p>
+              <p className="ms-1 mb-0">Name <span className="color-accent weight-700">*</span></p>
               <input className='form-control' type='text' value={recordState.songName} onChange={(e) => recordState.changeSongName(e.target.value)} />
             </div>
             <div>
-              <p className="ms-1 mb-0">Artist</p>
+              <p className="ms-1 mb-0">Artist <span className='color-accent weight-700'>*</span></p>
               <input className='form-control' type='text' value={recordState.songArtist} onChange={(e) => recordState.changeSongArtist(e.target.value)} />
             </div>
             <div>
-              <p className="ms-1 mb-0">Spotify URL</p>
+              <p className="ms-1 mb-0">URL</p>
               <input className='form-control' type='text' value={recordState.songUrl} onChange={(e) => recordState.changeSongUrl(e.target.value)} />
             </div>
           </div>

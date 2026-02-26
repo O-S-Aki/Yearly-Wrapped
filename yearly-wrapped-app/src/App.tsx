@@ -1,10 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 
-import { DayMobile, Home, Login, Navbar } from "./components";
+import { Toaster } from 'react-hot-toast';
 
 import { useAuth } from "./hooks";
-
 import { logout } from "./lib/api/user";
+
+import { DayMobile, Home, Login, Navbar } from "./components";
 
 import './App.css';
 
@@ -40,7 +41,12 @@ function App() {
             </>
             )
         }
+        <Toaster position="bottom-center" />
       </div>
+
+      <footer className="mt-3 mx-3 py-2 text-center text-smaller">
+        <p className="m-0">This application was created by <span className="weight-700">Dami Akiode</span></p>
+      </footer>
     </div>
   );
 }

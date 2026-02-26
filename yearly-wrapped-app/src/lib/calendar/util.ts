@@ -51,6 +51,11 @@ export function getNextDayInYear(isoDate: string): string {
   return convertToISODate(date);
 }
 
+export function getDayOfWeek (isoDate: string): number {
+  const [year, month, day] = isoDate.split("-").map(Number);
+  return new Date(year, month - 1, day).getDay();
+};
+
 export function getPreviousDayInYear(isoDate: string): string {
   const date: Date = new Date(isoDate);
   date.setDate(date.getDate() - 1);
@@ -80,4 +85,13 @@ export function getWeekdays(shortened?: boolean): string[] {
   }
 
   return weekdays;
+}
+
+export const moodMap: Record<string, number> = {
+  S: 1.0,
+  A: 0.85,
+  B: 0.65,
+  C: 0.45,
+  D: 0.25,
+  F: 0.05,
 }

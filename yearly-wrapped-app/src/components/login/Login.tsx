@@ -1,5 +1,7 @@
 import React from 'react';
 
+import toast from 'react-hot-toast';
+
 import { useState } from "react";
 import { client } from "../../lib/supabaseClient";
 
@@ -16,6 +18,8 @@ const Login: React.FC<PageProps> = ({ }) => {
   const [loading, setLoading] = useState(false);
 
   async function handleLogin(e: React.FormEvent) {
+    const loadingNotification = toast.loading('Logging in...');
+
     e.preventDefault();
     setLoading(true);
     setError(null);
@@ -26,7 +30,13 @@ const Login: React.FC<PageProps> = ({ }) => {
     });
 
     if (error) {
-      setError(error.message);
+      toast.remove(loadingNotification);
+      toast.error(error.message);
+      setPassword("");
+    }
+    else {
+      toast.remove(loadingNotification);
+      toast.success(`Logged in as ${email}`);
     }
 
     setLoading(false);

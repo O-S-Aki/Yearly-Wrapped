@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { useNavigate } from 'react-router-dom';
-
 import { MoodSelect } from '..';
 import { useDayRecordState } from '../../hooks';
 
@@ -15,10 +13,10 @@ interface RecordDayMobileProps {
   moods: IMood[];
   isoDate: string;
   onSave: (dayRecordState: IDayRecordState, mood: IMood | null) => void;
+  onCancel: (uri: string) => void;
 }
 
-const RecordDayMobile: React.FC<RecordDayMobileProps> = ({ state, moods, isoDate, onSave }) => {
-  const navigate = useNavigate();
+const RecordDayMobile: React.FC<RecordDayMobileProps> = ({ state, moods, isoDate, onSave, onCancel }) => {
   const recordState = useDayRecordState(state.day, isoDate);
 
   return (
@@ -63,15 +61,15 @@ const RecordDayMobile: React.FC<RecordDayMobileProps> = ({ state, moods, isoDate
           <>
           <div className="d-flex flex-column gap-2">
             <div>
-              <p className="ms-1 mb-0">Name</p>
+              <p className="ms-1 mb-0">Name <span className="color-accent weight-700">*</span></p>
               <input className='form-control' type='text' value={recordState.songName} onChange={(e) => recordState.changeSongName(e.target.value)} />
             </div>
             <div>
-              <p className="ms-1 mb-0">Artist</p>
+              <p className="ms-1 mb-0">Artist <span className='color-accent weight-700'>*</span></p>
               <input className='form-control' type='text' value={recordState.songArtist} onChange={(e) => recordState.changeSongArtist(e.target.value)} />
             </div>
             <div>
-              <p className="ms-1 mb-0">Spotify URL</p>
+              <p className="ms-1 mb-0">URL</p>
               <input className='form-control' type='text' value={recordState.songUrl} onChange={(e) => recordState.changeSongUrl(e.target.value)} />
             </div>
           </div>
@@ -80,11 +78,11 @@ const RecordDayMobile: React.FC<RecordDayMobileProps> = ({ state, moods, isoDate
       </div>
 
       <div className="d-flex flex-row justify-content-center align-items-center gap-2 mt-2 py-3">
-        <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/day/${isoDate}`)}>
-          <i className="bi bi-x-lg me-1"></i>
+        <div className="btn date-control-button background-tertiary" onClick={() => onCancel(`/day/${isoDate}`)}>
+          <i className="bi bi-x-lg me-1"></i> Cancel
         </div>
         <div className="btn date-control-button background-tertiary" onClick={() => onSave(recordState, state.selectedMood)}>
-          <i className="bi bi-floppy me-1"></i>
+          <i className="bi bi-floppy me-1"></i> Save
         </div>
       </div>
 

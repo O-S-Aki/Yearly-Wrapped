@@ -48,7 +48,7 @@
 
 @media (width < 768px) {
   .month-calendar {
-    border-radius: 2rem;
+    border-radius: 1.5rem;
   }
 
   .weekday-label {

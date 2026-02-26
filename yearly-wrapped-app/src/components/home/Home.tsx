@@ -7,6 +7,8 @@ import { useAuth, useCalendarState, useDayComponentState, useIsMobile, useMonthC
 
 import { formatDate, getNextDayInYear, getPreviousDayInYear } from '../../lib/calendar/util';
 
+import toast from 'react-hot-toast';
+
 import type { IDayRecordState, IMood } from '../../lib/interfaces';
 
 import './home.css';
@@ -29,10 +31,15 @@ const Home: React.FC<HomeProps> = ({ }) => {
   const monthComponentState = useMonthComponentState(calendarState);
 
   const handleSaveAndRefetchCalendar = async (dayRecordState: IDayRecordState, mood: IMood | null) => {
+    toast.loading('Saving...');
     const success = await dayComponentState.recordDay(dayRecordState, mood);
 
     if (success) {
       monthComponentState.updateCalendar();
+      toast.success(`Entry saved for ${formatDate(isoDate)}`)
+    }
+    else {
+      toast.error(`Failed to save entry for ${formatDate(isoDate)}`);
     }
   }
 
@@ -69,9 +76,11 @@ const Home: React.FC<HomeProps> = ({ }) => {
                   <div className="btn" onClick={goNextDay}><i className="bi bi-chevron-right"></i></div>
                 </div>
                 
-                <p className="mt-3 mb-0 text-center">
-                  Swipe on the calendar to navigate between months. Click on any day to view or record a summary for it.
-                </p>
+                <div className="px-3">
+                  <p className="mt-3 mb-0 text-center text-smaller">
+                    Swipe on the calendar to navigate between months. Click on any day to view or record a summary for it.
+                  </p>
+                </div>
               </div>
 
               <div className="analytics-section background-primary color-background p-3 mt-3">
@@ -87,11 +96,16 @@ const Home: React.FC<HomeProps> = ({ }) => {
                 <Day isoDate={isoDate} state={dayComponentState} moods={moods} onSave={handleSaveAndRefetchCalendar} />
               </div>
             </div>
-            <div className="bottom-section background-primary color-background d-flex flex-row align-items-center justify-content-start">
-              <div className="analytics-section w-100 p-3">
-                <Year days={monthComponentState.days} moods={moods} />
-              </div>
-            </div>
+            {
+              isMobile ? ( 
+              <>
+                <div className="bottom-section background-primary color-background d-flex flex-row align-items-center justify-content-start">
+                  <div className="analytics-section w-100 p-3">
+                    <Year days={monthComponentState.days} moods={moods} />
+                  </div>
+                </div>
+              </>) : (<></>)
+            }
             </>)
         }
       </div>

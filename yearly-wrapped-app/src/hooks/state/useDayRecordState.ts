@@ -14,6 +14,7 @@ export default function useDayRecordState(initialDay: IDay | null, date: string)
     setSongArtist(initialDay?.song?.artist || '');
     setSongUrl(initialDay?.song?.url || '');
     setNote(initialDay?.note || '');
+    setShowSongSection(initialDay?.song?.name ? true : false)
   }, [initialDay, date])
 
   const changeSongName = (name: string) => {

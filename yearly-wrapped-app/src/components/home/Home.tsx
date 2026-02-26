@@ -7,6 +7,8 @@ import { useAuth, useCalendarState, useDayComponentState, useIsMobile, useMonthC
 
 import { formatDate, getNextDayInYear, getPreviousDayInYear } from '../../lib/calendar/util';
 
+import toast from 'react-hot-toast';
+
 import type { IDayRecordState, IMood } from '../../lib/interfaces';
 
 import './home.css';
@@ -29,10 +31,15 @@ const Home: React.FC<HomeProps> = ({ }) => {
   const monthComponentState = useMonthComponentState(calendarState);
 
   const handleSaveAndRefetchCalendar = async (dayRecordState: IDayRecordState, mood: IMood | null) => {
+    toast.loading('Saving...');
     const success = await dayComponentState.recordDay(dayRecordState, mood);
 
     if (success) {
       monthComponentState.updateCalendar();
+      toast.success(`Entry saved for ${formatDate(isoDate)}`)
+    }
+    else {
+      toast.error(`Failed to save entry for ${formatDate(isoDate)}`);
     }
   }
 

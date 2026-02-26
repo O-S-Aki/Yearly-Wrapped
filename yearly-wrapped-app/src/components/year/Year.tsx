@@ -30,7 +30,7 @@ const maxCount = Math.max(...moodCounts.map(m => m.count), 1);
       <div className={`app-component d-flex pt-2 flex-column ${isMobile ? 'text-center' : ''}`}>
 
         <div className="year-title-container pb-3">
-          <h3 className='year-title m-0'>Analytics</h3>
+          <h3 className='year-title m-0'>Insights</h3>
         </div>
 
         <p className="mt-3 mb-0 text-smaller">

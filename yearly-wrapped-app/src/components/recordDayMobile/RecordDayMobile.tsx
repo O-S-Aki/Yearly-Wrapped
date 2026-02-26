@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { useNavigate } from 'react-router-dom';
-
 import { MoodSelect } from '..';
 import { useDayRecordState } from '../../hooks';
 
@@ -15,10 +13,10 @@ interface RecordDayMobileProps {
   moods: IMood[];
   isoDate: string;
   onSave: (dayRecordState: IDayRecordState, mood: IMood | null) => void;
+  onCancel: (uri: string) => void;
 }
 
-const RecordDayMobile: React.FC<RecordDayMobileProps> = ({ state, moods, isoDate, onSave }) => {
-  const navigate = useNavigate();
+const RecordDayMobile: React.FC<RecordDayMobileProps> = ({ state, moods, isoDate, onSave, onCancel }) => {
   const recordState = useDayRecordState(state.day, isoDate);
 
   return (
@@ -80,7 +78,7 @@ const RecordDayMobile: React.FC<RecordDayMobileProps> = ({ state, moods, isoDate
       </div>
 
       <div className="d-flex flex-row justify-content-center align-items-center gap-2 mt-2 py-3">
-        <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/day/${isoDate}`)}>
+        <div className="btn date-control-button background-tertiary" onClick={() => onCancel(`/day/${isoDate}`)}>
           <i className="bi bi-x-lg me-1"></i> Cancel
         </div>
         <div className="btn date-control-button background-tertiary" onClick={() => onSave(recordState, state.selectedMood)}>

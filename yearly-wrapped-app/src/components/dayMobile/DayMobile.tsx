@@ -1,5 +1,7 @@
 import React from 'react'
 
+import toast from 'react-hot-toast';
+
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth, useDayComponentState, useMoods } from '../../hooks';
 
@@ -38,11 +40,24 @@ const DayMobile: React.FC<DayMobileProps> = ({ editMode }) => {
   }
 
   const handleSave = async (dayRecordState: IDayRecordState, mood: IMood | null) => {
+    const loadingNotification = toast.loading('Saving...');
     const success = await state.recordDay(dayRecordState, mood);
 
     if (success) {
+      toast.remove(loadingNotification);
+      toast.success(`Entry saved for ${formatDate(isoDate)}`);
+
       navigate(`/day/${isoDate}`);
     }
+    else {
+      toast.remove(loadingNotification);
+      toast.error(`Failed to save entry for ${formatDate(isoDate)}`);
+    }
+  }
+
+  const handleCancel = (uri: string) => {
+    toast.error('Cancelled');
+    navigate(uri);
   }
 
   return (
@@ -61,7 +76,7 @@ const DayMobile: React.FC<DayMobileProps> = ({ editMode }) => {
           <>
             <div className="px-4">
               <div className="day-edit-container w-100">
-                <RecordDayMobile state={state} moods={moods} isoDate={isoDate} onSave={handleSave} />
+                <RecordDayMobile state={state} moods={moods} isoDate={isoDate} onSave={handleSave} onCancel={handleCancel} />
               </div>
             </div>
           </>) : (
@@ -69,9 +84,9 @@ const DayMobile: React.FC<DayMobileProps> = ({ editMode }) => {
             <div className="px-4">
               <div className="day-details-container w-100">
                 <DayDetails day={state.day} moods={moods} />
-                <div className="py-3 d-flex flex-row justify-content-center gap-2">
-                  <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/home`)}> <i className="bi bi-reply-fill"></i> Back </div>
-                  <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/day/${isoDate}/edit`)}> {state.day ? <><i className="bi bi-pencil-fill"></i> Edit</> : <><i className="bi bi-pencil-fill"></i> Record</>} </div>
+                <div className="mt-2 py-3 d-flex flex-row justify-content-center gap-2">
+                  <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/home`)}> <i className="bi bi-reply-fill"></i> To Calendar </div>
+                  <div className="btn date-control-button background-tertiary" onClick={() => navigate(`/day/${isoDate}/edit`)}> {state.day ? <><i className="bi bi-pencil-fill"></i> Edit Day</> : <><i className="bi bi-pencil-fill"></i> Record Day</>} </div>
                 </div>
               </div>
             </div>
